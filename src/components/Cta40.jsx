@@ -1,46 +1,33 @@
 "use client";
 
-import { Button, Card, Input } from "@relume_io/relume-ui";
 import React from "react";
+import CountUp from "react-countup";
 
 export function Cta40() {
+  const stats = [
+    { number: 95, suffix: "%", label: "Viral suppression rate among clients" },
+    { number: 5000, suffix: "+", label: "Farmers trained in climate-smart agriculture" },
+    { number: 40, suffix: "%", label: "Target reduction in gender-based violence by 2027" },
+    { number: 10000, suffix: "+", label: "Women and girls served annually" },
+  ];
+
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="container">
-        <Card className="grid auto-cols-fr grid-cols-1 lg:grid-cols-2">
-          <div className="flex flex-col justify-center p-8 md:p-12">
-            <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
-              Stay Updated with BHASO
-            </h2>
-            <p className="md:text-md">
-              Subscribe to our newsletter for the latest blog updates and
-              important information from BHASO.
-            </p>
-            <div className="mt-6 w-full max-w-sm md:mt-8">
-              <form className="rb-4 mb-4 grid w-full max-w-sm grid-cols-1 gap-y-3 sm:grid-cols-[1fr_max-content] sm:gap-4">
-                <Input id="email" type="email" placeholder="Your Email Here" />
-                <Button
-                  title="Join Us"
-                  variant="primary"
-                  size="sm"
-                  className="items-center justify-center px-6 py-3"
-                >
-                  Join Us
-                </Button>
-              </form>
-              <p className="text-xs">
-                By clicking Join Us, you agree to our Terms and Conditions.
-              </p>
+    <section className="py-16 px-4 bg-green-700 text-white">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-12">Our Impact</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center">
+              <div className="text-5xl font-bold mb-2">
+                <CountUp end={stat.number} duration={3} />{stat.suffix}
+              </div>
+              <p className="text-green-100">{stat.label}</p>
             </div>
-          </div>
-          <div className="flex items-center justify-center">
-            <img
-              src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape4x3.svg"
-              className="w-full object-cover"
-              alt="Relume placeholder image"
-            />
-          </div>
-        </Card>
+          ))}
+        </div>
+        
+    
       </div>
     </section>
   );

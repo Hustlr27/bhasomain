@@ -1,25 +1,56 @@
 "use client";
 
 import { Button } from "@relume_io/relume-ui";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export function Header62() {
+  const images = [
+    "https://images.pexels.com/photos/5384621/pexels-photo-5384621.jpeg", // Healthcare workers
+    "https://images.pexels.com/photos/753772/pexels-photo-753772.jpeg", // Community meeting
+    "https://images.pexels.com/photos/6238028/pexels-photo-6238028.jpeg", // Climate impact
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="container max-w-lg text-center">
-        <p className="mb-3 font-semibold md:mb-4">Empower</p>
-        <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl lg:text-10xl">
-          Our Purpose Matters
-        </h1>
-        <p className="md:text-md">
-          BHASO is dedicated to uplifting communities affected by HIV/AIDS and
-          climate change in Zimbabwe.
+    <section
+      id="relume"
+      className="relative h-[70vh] w-full flex items-center justify-center text-white transition-all duration-1000 ease-in-out"
+      style={{
+        backgroundImage: `url(${images[currentIndex]})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      
+
+      {/* Content */}
+      <div className="relative z-10 text-center px-4">
+        <p className="mb-4 text-xl uppercase tracking-widest text-green-300 font-semibold">
+          Our Work in Zimbabwe
         </p>
-        <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
-          <Button title="Learn More">Learn More</Button>
-          <Button title="Join Us" variant="secondary">
-            Join Us
+        <h1 className="text-5xl md:text-6xl font-bold mb-4">
+          Creating Healthier, More Resilient Communities
+        </h1>
+        <p className="max-w-2xl mx-auto text-lg mb-6 text-white">
+          Since 1992, BHASO has been at the forefront of HIV/AIDS response,
+          climate justice, and gender equality initiatives across Zimbabwe's
+          most vulnerable communities.
+        </p>
+        <div className="flex justify-center gap-4">
+          <Button style={{ backgroundColor: "#047857", color: "white" }}>
+            Our Strategic Plan
           </Button>
+          <Button variant="secondary">See Our Impact</Button>
         </div>
       </div>
     </section>
