@@ -24,7 +24,7 @@ export function Footer12() {
               <p className="text-sm md:text-base text-green-200">
                 Join us in making a difference for those affected by HIV/AIDS and climate change.
               </p>
-              <div className="mt-5 flex flex-wrap gap-4">
+              <div className="mt-6 flex flex-wrap gap-4">
                 <Button title="Learn" className="text-sm px-4 py-2 bg-green-900 hover:bg-green-700 text-white" />
                 <Button title="Donate" variant="secondary" className="text-sm px-4 py-2 border-green-300 text-green-300 hover:bg-green-700" />
               </div>
