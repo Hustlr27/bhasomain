@@ -6,32 +6,37 @@ const programs = [
   {
     id: "wellness",
     title: "Wellness",
+    image: "https://images.pexels.com/photos/6646934/pexels-photo-6646934.jpeg",
     description:
       "Our wellness program is centered on enhancing the physical, emotional, and social well-being of individuals and communities. We take a holistic approach by combining mental health support, preventive care, and community-driven initiatives. From organizing local health camps to providing accessible therapy resources, the wellness program builds resilient communities capable of supporting one another. We also partner with local organizations to ensure that our approach is inclusive, culturally sensitive, and tailored to the unique needs of each group we serve.",
   },
   {
     id: "education",
     title: "Education",
+    image: "https://images.pexels.com/photos/4144223/pexels-photo-4144223.jpeg",
     description:
-      "Education is the foundation of empowerment, and our education program is dedicated to bridging learning gaps and expanding access to quality resources. We focus on early childhood education, after-school support, and adult literacy programs that are adapted to the digital age. Our mobile classrooms and learning hubs bring education directly to underserved areas, promoting lifelong learning opportunities and reducing dropout rates. By investing in teacher training and digital literacy, we ensure that education remains relevant, engaging, and accessible to all.",
+      "Education is the foundation of empowerment. Our education program bridges learning gaps and expands access to quality resources. We focus on early childhood education, after-school support, and adult literacy. With mobile classrooms and hubs, we bring learning directly to underserved areas and reduce dropout rates. Our efforts ensure education remains relevant and inclusive for all.",
   },
   {
     id: "climate",
     title: "Climate Action",
+    image: "https://images.pexels.com/photos/1557286/pexels-photo-1557286.jpeg",
     description:
-      "The climate action program champions community-led solutions to mitigate and adapt to the effects of climate change. We work closely with local stakeholders to implement sustainable agriculture practices, renewable energy solutions, and ecosystem restoration efforts. Through education, advocacy, and hands-on training, we equip individuals with the knowledge and tools to protect their environment. Our initiatives are science-backed and rooted in the belief that every community has the power to contribute meaningfully to climate resilience.",
+      "The climate action program drives community-led solutions for sustainability. We promote renewable energy, sustainable farming, and reforestation. Through education and training, we empower people to protect their environment. Every community has a role to play in climate resilience—and we help them act on it.",
   },
   {
     id: "entrepreneurship",
     title: "Entrepreneurship",
+    image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
     description:
-      "Our entrepreneurship program fuels innovation and economic independence through hands-on business development support. We offer mentorship, funding opportunities, and skill-building workshops to aspiring entrepreneurs, particularly from marginalized backgrounds. Whether it's launching a local craft business or scaling a tech startup, we provide tools that help businesses thrive. With a focus on sustainability and social impact, our program nurtures responsible business practices and fosters inclusive local economies.",
+      "Our entrepreneurship program supports innovation and independence. We provide training, funding, and mentorship for small businesses and startups. Especially focused on marginalized communities, we help turn ideas into sustainable businesses that uplift local economies.",
   },
   {
     id: "advocacy",
     title: "Advocacy",
+    image: "https://images.pexels.com/photos/4668483/pexels-photo-4668483.jpeg",
     description:
-      "The advocacy program empowers individuals to influence change at the systemic level. We support grassroots campaigns, policy reform efforts, and leadership development initiatives that elevate underrepresented voices. By educating communities about their rights and amplifying their stories, we build networks of informed advocates ready to take action. Our team also collaborates with lawmakers and civil society groups to drive reforms in healthcare, education, climate, and human rights policies that reflect community needs and priorities.",
+      "The advocacy program builds power through grassroots campaigns and leadership training. We empower communities to push for systemic change through education, rights awareness, and strategic partnerships with policymakers. Every voice matters, and we help amplify them.",
   },
 ];
 
@@ -39,34 +44,58 @@ export function Layout12() {
   const [selectedProgram, setSelectedProgram] = useState(programs[0]);
 
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="container">
-        <h2 className="mb-8 text-3xl font-bold text-center md:text-4xl">
+    <section className="px-[5%] pb-20 bg-white">
+      <div className="container mx-auto">
+        {/* Section Heading */}
+        <h2 className="text-4xl font-bold text-center mb-10 text-green-900">
           Our Programs
         </h2>
 
-        {/* Buttons */}
+        {/* Program Selector Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {programs.map((program) => (
             <button
               key={program.id}
               onClick={() => setSelectedProgram(program)}
-              className={`px-4 py-2 rounded-md font-medium border transition ${selectedProgram.id === program.id
+              className={`px-4 py-2 rounded-md font-medium border transition ${
+                selectedProgram.id === program.id
                   ? "bg-green-900 text-white border-green-900"
                   : "text-green-900 border-green-900 hover:bg-green-100"
-                }`}
+              }`}
             >
               {program.title}
             </button>
           ))}
         </div>
 
-        {/* Description */}
-        <div className="max-w-3xl mx-auto text-lg leading-relaxed">
-          <h3 className="mb-4 text-2xl font-semibold text-green-900">
-            {selectedProgram.title}
-          </h3>
-          <p>{selectedProgram.description}</p>
+        {/* Program Detail */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Left Image */}
+          <div>
+            <img
+              src={selectedProgram.image}
+              alt={selectedProgram.title}
+              className="rounded-xl w-full h-[400px] md:h-[500px] object-cover"
+            />
+          </div>
+
+          {/* Right Content */}
+          <div className="text-lg leading-relaxed">
+            <h3 className="text-3xl font-bold text-green-900 mb-6 text-left">
+              {selectedProgram.title}
+            </h3>
+            <p className="text-gray-700 mb-6">{selectedProgram.description}</p>
+
+            {/* Buttons aligned left */}
+            <div className="flex gap-4">
+              <button className="bg-green-900 text-white px-6 py-3 rounded-md text-lg hover:bg-green-800 transition">
+                Donate
+              </button>
+              <button className="border border-gray-400 text-gray-700 px-6 py-3 rounded-md text-lg hover:bg-gray-100 transition">
+                Volunteer
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
