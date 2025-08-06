@@ -47,14 +47,19 @@ export function Layout240() {
     },
   ];
 
+  const cardsPerRow = 4;
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  // If number of programs is more than cardsPerRow, show arrows/carousel (optional)
+  // But per request, remove scrolling effect if cards fit in one line (i.e. <= cardsPerRow)
+  const showCarousel = programs.length > cardsPerRow;
+
   return (
-    <section className="bg-green-900 text-white px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="bg-white text-green-900 px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-12 md:mb-18 lg:mb-20">
-          <p className="text-sm uppercase tracking-widest text-green-300 mb-2">
+          <p className="text-sm uppercase tracking-widest text-green-700 mb-2">
             Programs
           </p>
           <h2 className="text-3xl font-extrabold md:text-4xl leading-tight">
@@ -62,41 +67,48 @@ export function Layout240() {
           </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Scrollable List on the Left */}
-          <div className="lg:w-1/3 max-h-[600px] overflow-y-auto space-y-4 pr-2">
-            {programs.map(({ src, alt, title, desc }, i) => (
+        {/* Cards */}
+        <div
+          className={`flex gap-6 ${
+            showCarousel ? "overflow-hidden" : "flex-wrap"
+          }`}
+        >
+          {programs.map(({ src, alt, title, desc }, i) => {
+            const isSelected = i === selectedIndex;
+            return (
               <div
                 key={i}
                 onClick={() => setSelectedIndex(i)}
-                className={`cursor-pointer bg-green-800 rounded-lg p-4 transition-transform hover:scale-[1.02] ${
-                  selectedIndex === i ? "ring-2 ring-green-300" : ""
+                className={`relative cursor-pointer rounded-lg shadow-lg overflow-hidden flex-shrink-0 w-[22%] transition-transform duration-300 ${
+                  isSelected ? "ring-4 ring-green-700 scale-105" : "hover:scale-[1.03]"
                 }`}
+                style={{ height: "220px" }}
               >
                 <img
                   src={src}
                   alt={alt}
-                  className="w-full h-32 object-cover rounded-md mb-3"
+                  className="absolute inset-0 w-full h-full object-cover brightness-75"
                 />
-                <h4 className="text-lg font-semibold text-white">{title}</h4>
-                <p className="text-sm text-green-200">{desc}</p>
+                <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/70 to-transparent w-full text-white">
+                  <h4 className="text-lg font-semibold">{title}</h4>
+                  <p className="text-sm">{desc}</p>
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
 
-          {/* Main Selected Program on the Right */}
-          <div className="lg:flex-1">
-            <img
-              src={programs[selectedIndex].src}
-              alt={programs[selectedIndex].alt}
-              className="w-full h-[300px] md:h-[400px] object-cover rounded-md mb-6"
-            />
-            <div>
-              <h3 className="text-2xl font-bold mb-4">{programs[selectedIndex].title}</h3>
-              <p className="leading-relaxed text-green-100 mb-8">
-                {programs[selectedIndex].detailed}
-              </p>
-            </div>
+        {/* Detailed description & buttons below */}
+        <div className="mt-12 max-w-3xl text-green-900">
+          <p className="leading-relaxed mb-8">{programs[selectedIndex].detailed}</p>
+
+          <div className="flex gap-6">
+            <Button className="bg-green-700 hover:bg-green-600 text-white px-6 py-3">
+              Learn More
+            </Button>
+            <Button variant="link" className="text-green-700 hover:text-green-900">
+              Donate
+            </Button>
           </div>
         </div>
       </div>
