@@ -23,10 +23,11 @@ export default function Home() {
             <Layout6 />
             <Blog55 />
             <Gallery7 />
-            <Cta8 />
             <Cta19 />
             <Logo6 />
             <Cta20 />
+            <Cta8 />
+            
         </div>
     );
 }

@@ -11,24 +11,34 @@ export function Layout192() {
         <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
           <div className="order-2 md:order-1">
             <img
-              src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg"
+              src="https://images.pexels.com/photos/30898071/pexels-photo-30898071.jpeg"
               className="w-full rounded-md object-cover"
-              alt="Relume placeholder image"
+              alt="BHASO community health workers providing care"
             />
           </div>
           <div className="order-1 lg:order-2">
-            <p className="mb-2 font-semibold text-green-800 uppercase">About Our Work</p>
-            <h2 className="mb-5 text-4xl font-bold leading-tight md:text-6xl lg:text-7xl text-gray-900">
-              Transforming Lives Through Health & Sustainability
+            <p className="mb-2 font-semibold text-green-800 uppercase tracking-widest">
+              Our Approach
+            </p>
+            <h2 className="mb-5 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl text-green-900">
+              Building HIV-Resilient & Climate-Smart Communities
             </h2>
-            <p className="text-md text-gray-700 mb-6">
-              Our programs tackle the dual challenges of HIV/AIDS and climate change,
-              empowering communities to thrive. Through education, training, and access to
-              resources, we build sustainable, resilient futures for vulnerable populations.
+            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              BHASO implements integrated programs addressing Zimbabwe's interconnected health and climate challenges. 
+              Through our innovative models like SWAG and CHASA, we provide HIV/TB services, climate-smart agriculture 
+              training, and gender equality programs across four provinces. Our community-centered approach ensures 
+              sustainable impact aligned with Zimbabwe's National Development Strategy and Global AIDS targets.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button className="bg-green-800 text-white px-6 py-3 rounded-md hover:bg-green-700 text-sm font-medium">
-                Learn More
+                View Our Strategic Plan
+                <RxChevronRight className="ml-1" size={18} />
+              </Button>
+              <Button 
+                variant="secondary" 
+                className="border border-green-800 text-green-800 px-6 py-3 rounded-md hover:bg-green-50 text-sm font-medium"
+              >
+                Our Programs
               </Button>
             </div>
           </div>

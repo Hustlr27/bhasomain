@@ -1,346 +1,335 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@relume_io/relume-ui";
 
 export function Cta19() {
-  const presetAmounts = ["25", "50", "75", "99", "200"];
-  const [selectedAmount, setSelectedAmount] = useState("99");
-  const [customAmount, setCustomAmount] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("visa");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  const [donationType, setDonationType] = useState("monthly");
+  const [currency, setCurrency] = useState("USD");
+  const [paymentMethod, setPaymentMethod] = useState("");
   const [showLocalPayments, setShowLocalPayments] = useState(false);
-  const [selectedLocalMethod, setSelectedLocalMethod] = useState(null);
+  const [selectedLocalMethod, setSelectedLocalMethod] = useState("ecocash");
+  const [formData, setFormData] = useState({
+    name: "",
+    surname: "",
+    email: "",
+    phone: "",
+    cardNumber: "",
+    expiry: "",
+    cvc: "",
+  });
 
-  // Example progress for donation bar
-  const donationGoal = 10000; // $10,000 goal
-  const donationRaised = 7800; // $7,800 raised so far
-  const progressPercent = Math.min(
-    Math.round((donationRaised / donationGoal) * 100),
-    100
-  );
-
-  const handleDonate = () => {
-    const amount = customAmount.trim() !== "" ? customAmount : selectedAmount;
-    alert(
-      `Processing donation of $${amount} via ${paymentMethod.toUpperCase()} method. Donor: ${firstName} ${lastName}, Email: ${email}`
-    );
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const paymentMethods = [
-    {
-      id: "visa",
-      label: "Visa",
-      imgSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png",
-    },
-    {
-      id: "mastercard",
-      label: "Mastercard",
-      imgSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png",
-    },
-    {
-      id: "paypal",
-      label: "PayPal",
-      imgSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg",
-    },
-    {
-      id: "applepay",
-      label: "Apple Pay",
-      imgSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
-    },
-    {
-      id: "googlepay",
-      label: "Google Pay",
-      imgSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/1280px-Google_Pay_Logo.svg.png",
-    },
-  ];
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Thank you for your ${donationType} donation in ${currency}!`);
+  };
 
-  const localMethodsInfo = {
+  const paymentLogos = [
+    { id: "applepay", label: "Apple Pay", img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
+    { id: "googlepay", label: "Google Pay", img: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Google_Pay_Logo.svg" },
+    { id: "paypal", label: "PayPal", img: "https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" },
+    { id: "card", label: "Card", img: "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.svg" },
+    { id: "mastercard", label: "Mastercard", img: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" },
+  ];
+
+  const localPaymentMethods = {
     ecocash: {
       title: "Ecocash",
       instructions: [
-        "Dial *151# on your phone.",
-        "Select 'Payments' > 'Pay Merchant'.",
-        "Enter Merchant ID: 1234567.",
-        "Enter the donation amount.",
-        "Confirm the payment.",
-      ],
-      account: "Merchant ID: 1234567",
+        "Dial *151# on your mobile phone",
+        "Select 'Pay Bill' option",
+        "Enter Business Number: 123456",
+        "Use Reference: BHASODONATION",
+        "Enter your donation amount",
+        "Confirm transaction with your PIN"
+      ]
     },
     mukuru: {
       title: "Mukuru",
       instructions: [
-        "Visit any Mukuru agent location.",
-        "Provide the recipient name: BHASO Donations.",
-        "Provide the amount to send.",
-        "Use reference: DONATE2025.",
-        "Pay the agent and keep your receipt.",
-      ],
-      account: "Reference Code: DONATE2025",
+        "Visit any Mukuru agent location",
+        "Provide recipient name: BHASO Donations",
+        "Specify the amount to send",
+        "Use reference code: DONATE2024",
+        "Complete payment with the agent",
+        "Keep your receipt as proof of payment"
+      ]
     },
-    bank: {
+    banktransfer: {
       title: "Bank Transfer",
       instructions: [
-        "Use your banking app or visit your bank.",
-        "Send funds to the following account:",
-        "Bank: CBZ Bank",
+        "Bank Name: CBZ Bank",
         "Account Name: BHASO Donations",
-        "Account Number: 9876543210",
-        "Branch Code: 12345",
-        "Use your full name as payment reference.",
-      ],
-      account: "Account Number: 9876543210",
-    },
+        "Account Number: 4567890123",
+        "Branch: Harare Main (12345)",
+        "Swift Code: COBZZWHA",
+        "Reference: DONATION-" + (formData.name || "YOURNAME")
+      ]
+    }
   };
 
-  const localPaymentMethodsList = (
-    <div className="bg-green-900/5 rounded-lg p-8 shadow-lg max-w-md mx-0 text-left">
-      <h2 className="text-2xl font-semibold text-green-800 mb-6">
-        Local Payment Methods
-      </h2>
-      <div className="grid grid-cols-1 gap-4">
-        {Object.entries(localMethodsInfo).map(([key, method]) => (
-          <div
-            key={key}
-            onClick={() => setSelectedLocalMethod(key)}
-            className="cursor-pointer border border-green-700 rounded-lg p-4 hover:bg-green-700 hover:text-white transition-shadow shadow-md"
-          >
-            <h3 className="font-semibold text-lg">{method.title}</h3>
-          </div>
-        ))}
-      </div>
-      <Button
-        onClick={() => setShowLocalPayments(false)}
-        className="mt-8 bg-green-800 text-white hover:bg-green-900 py-3 px-6 rounded-md font-semibold"
-      >
-        Back to Donation
-      </Button>
-    </div>
-  );
-
-  const selectedLocalPaymentDetails = selectedLocalMethod ? (
-    <div className="bg-green-900/5 rounded-lg p-8 shadow-lg max-w-md mx-0 text-left">
-      <h2 className="text-2xl font-semibold text-green-800 mb-6">
-        {localMethodsInfo[selectedLocalMethod].title} Payment Instructions
-      </h2>
-      <ol className="list-decimal list-inside space-y-2 text-green-900 font-semibold text-lg">
-        {localMethodsInfo[selectedLocalMethod].instructions.map(
-          (step, idx) => (
-            <li key={idx}>{step}</li>
-          )
-        )}
-      </ol>
-      <p className="mt-4 font-semibold text-green-700">
-        {localMethodsInfo[selectedLocalMethod].account}
-      </p>
-      <Button
-        onClick={() => setSelectedLocalMethod(null)}
-        className="mt-8 bg-green-800 text-white hover:bg-green-900 py-3 px-6 rounded-md font-semibold"
-      >
-        Back to Payment Methods
-      </Button>
-    </div>
-  ) : (
-    <div className="text-green-700 font-semibold p-8 max-w-md">
-      <p>Select a payment method on the left to see instructions here.</p>
-    </div>
-  );
-
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-white text-gray-900">
-      <div className="container mx-auto flex flex-col lg:flex-row gap-10">
-        {/* Left Donation Form */}
-        <div className="flex-1">
-          <h1 className="text-3xl font-bold text-green-800 mb-6">Donate</h1>
+    <section className="flex flex-col md:flex-row min-h-screen">
+      {/* LEFT SIDE - Donation Info */}
+      <div className="md:w-2/5 w-full bg-green-900 text-white flex flex-col justify-center p-10">
+        <h2 className="text-3xl font-bold mb-4">Your Support Powers Our Strategic Pillars</h2>
+        <p className="mb-4 leading-relaxed text-lg">
+          Every donation helps us advance our 2023-2027 strategic goals in:
+        </p>
+        
+        <div className="mb-6">
+          <h3 className="font-semibold text-xl mb-2">Health & Wellness</h3>
+          <p className="mb-4 leading-relaxed">
+            Supporting HIV prevention, treatment and care programs that reach vulnerable communities across Zimbabwe.
+          </p>
+          
+          <h3 className="font-semibold text-xl mb-2">Climate Justice</h3>
+          <p className="mb-4 leading-relaxed">
+            Funding sustainable agriculture and resilience programs to combat climate change impacts.
+          </p>
+          
+          <h3 className="font-semibold text-xl mb-2">Gender Equality</h3>
+          <p className="mb-4 leading-relaxed">
+            Empowering women and girls through education, economic opportunities and rights advocacy.
+          </p>
+          
+          <h3 className="font-semibold text-xl mb-2">Community Systems</h3>
+          <p className="leading-relaxed">
+            Strengthening local health systems and community-led responses to health challenges.
+          </p>
+        </div>
+        
+        <p className="font-semibold mt-6">
+          Together, we're building healthier, more resilient communities in Zimbabwe.
+        </p>
+      </div>
 
-          {!showLocalPayments ? (
-            <>
-              <div className="bg-green-900/5 rounded-lg p-8 shadow-lg">
-                <div className="mb-4 text-right text-lg font-semibold text-green-800">
-                  ${customAmount !== "" ? customAmount : selectedAmount}
-                </div>
-                <div className="mb-6 flex flex-wrap gap-3">
-                  {presetAmounts.map((amount) => (
-                    <button
-                      key={amount}
-                      onClick={() => {
-                        setSelectedAmount(amount);
-                        setCustomAmount("");
-                      }}
-                      className={`px-5 py-2 rounded-lg font-semibold text-sm ${
-                        selectedAmount === amount && customAmount === ""
-                          ? "bg-green-800 text-white"
-                          : "bg-white text-green-800 border border-green-800 hover:bg-green-800 hover:text-white transition"
-                      }`}
-                    >
-                      ${amount}
-                    </button>
-                  ))}
+      {/* RIGHT SIDE - Donation Form */}
+      <div className="flex-1 bg-white p-10 flex flex-col justify-center">
+        {!showLocalPayments ? (
+          <div className="max-w-lg mx-auto">
+            <h1 className="text-3xl font-bold mb-2">
+              Support BHASO's <span className="text-green-700">Strategic Mission</span>
+            </h1>
+
+            {/* Step 1 */}
+            <p className="uppercase text-xs tracking-wide text-gray-500 mt-6 mb-2">
+              Step 1 – Choose frequency and amount
+            </p>
+            <div className="flex space-x-4 mb-4">
+              <button
+                onClick={() => setDonationType("monthly")}
+                className={`px-4 py-2 rounded-full text-sm font-semibold ${
+                  donationType === "monthly"
+                    ? "bg-green-100 text-green-900 border border-green-900"
+                    : "bg-gray-100 text-gray-700"
+                }`}
+              >
+                Monthly Support
+              </button>
+              <button
+                onClick={() => setDonationType("one-time")}
+                className={`px-4 py-2 rounded-full text-sm font-semibold ${
+                  donationType === "one-time"
+                    ? "bg-green-100 text-green-900 border border-green-900"
+                    : "bg-gray-100 text-gray-700"
+                }`}
+              >
+                One-time Donation
+              </button>
+            </div>
+
+            {/* Amount + Currency */}
+            <div className="flex items-center border border-gray-300 rounded-lg p-3 w-full max-w-xs mb-6">
+              <span className="mr-2 text-gray-500">$</span>
+              <input
+                type="number"
+                placeholder="100.00"
+                className="flex-1 outline-none"
+              />
+              <select
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                className="ml-2 outline-none bg-transparent"
+              >
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="ZWL">ZWL</option>
+              </select>
+            </div>
+
+            {/* Step 2 */}
+            <p className="uppercase text-xs tracking-wide text-gray-500 mt-6 mb-2">
+              Step 2 – Enter your details
+            </p>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="flex space-x-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="First Name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg"
+                />
+                <input
+                  type="text"
+                  name="surname"
+                  placeholder="Surname"
+                  value={formData.surname}
+                  onChange={handleInputChange}
+                  required
+                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg"
+                />
+              </div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+              />
+
+              {/* Payment Method Logos */}
+              <div className="flex flex-wrap gap-4 mt-4">
+                {paymentLogos.map((logo) => (
+                  <button
+                    type="button"
+                    key={logo.id}
+                    onClick={() => setPaymentMethod(logo.id)}
+                    className={`p-3 border rounded-lg flex items-center justify-center w-20 h-16 ${
+                      paymentMethod === logo.id
+                        ? "border-green-900"
+                        : "border-gray-300"
+                    }`}
+                  >
+                    <img
+                      src={logo.img}
+                      alt={logo.label}
+                      className="max-h-8 object-contain"
+                    />
+                  </button>
+                ))}
+              </div>
+
+              {/* Card details only if card is selected */}
+              {paymentMethod === "card" || paymentMethod === "mastercard" ? (
+                <>
                   <input
-                    type="number"
-                    min="1"
-                    placeholder="Custom Amount"
-                    value={customAmount}
-                    onChange={(e) => {
-                      setCustomAmount(e.target.value);
-                      setSelectedAmount("");
-                    }}
-                    className="w-[130px] px-4 py-2 rounded-lg border border-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-green-800"
+                    type="text"
+                    name="cardNumber"
+                    placeholder="Card Number"
+                    value={formData.cardNumber}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg"
                   />
-                </div>
-
-                <div className="mb-6">
-                  <div className="mb-2 font-semibold text-green-800">
-                    Select Payment Method
-                  </div>
-                  <div className="flex gap-6">
-                    {paymentMethods.map(({ id, label, imgSrc }) => (
-                      <div
-                        key={id}
-                        onClick={() => setPaymentMethod(id)}
-                        className={`cursor-pointer p-2 rounded-lg border-2 ${
-                          paymentMethod === id
-                            ? "border-green-800"
-                            : "border-transparent"
-                        } hover:border-green-600 transition`}
-                        title={label}
-                      >
-                        <img
-                          src={imgSrc}
-                          alt={label}
-                          className="h-10 w-auto object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    handleDonate();
-                  }}
-                  className="space-y-4"
-                >
-                  <div className="flex gap-4">
+                  <div className="flex space-x-4">
                     <input
                       type="text"
-                      placeholder="First Name"
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
-                      required
-                      className="flex-1 rounded-md border border-green-800 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+                      name="expiry"
+                      placeholder="MM/YY"
+                      value={formData.expiry}
+                      onChange={handleInputChange}
+                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg"
                     />
                     <input
                       type="text"
-                      placeholder="Last Name"
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
-                      required
-                      className="flex-1 rounded-md border border-green-800 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+                      name="cvc"
+                      placeholder="CVC"
+                      value={formData.cvc}
+                      onChange={handleInputChange}
+                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg"
                     />
                   </div>
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="w-full rounded-md border border-green-800 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
-                  />
+                </>
+              ) : null}
 
-                  <div className="flex gap-4 items-center mt-4">
-                    <Button
-                      type="submit"
-                      className="flex-1 bg-green-800 text-white hover:bg-green-900 py-3 rounded-md font-semibold"
-                    >
-                      Donate Now
-                    </Button>
-                    <Button
-                      type="button"
-                      onClick={() => {
-                        setShowLocalPayments(true);
-                        setSelectedLocalMethod(null);
-                      }}
-                      className="flex-1 bg-green-600 text-white hover:bg-green-700 py-3 rounded-md font-semibold"
-                    >
-                      Local Payments
-                    </Button>
+              <button
+                type="submit"
+                className="w-full bg-green-900 text-white py-4 rounded-lg font-semibold hover:bg-green-800"
+              >
+                {donationType === "monthly"
+                  ? "Become a Monthly Supporter"
+                  : "Make a Donation"}
+              </button>
+            </form>
+
+            {/* Local payments link */}
+            <button
+              onClick={() => setShowLocalPayments(true)}
+              className="mt-4 text-green-900 font-semibold underline hover:text-green-700"
+            >
+              View Zimbabwean payment options
+            </button>
+          </div>
+        ) : (
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Local payment methods list */}
+            <div className="md:w-1/3">
+              <h2 className="text-2xl font-bold mb-6 text-green-900">Local Payment Methods</h2>
+              <div className="space-y-4">
+                {Object.entries(localPaymentMethods).map(([key, method]) => (
+                  <button
+                    key={key}
+                    onClick={() => setSelectedLocalMethod(key)}
+                    className={`w-full text-left p-4 rounded-lg border ${
+                      selectedLocalMethod === key
+                        ? "border-green-900 bg-green-50"
+                        : "border-gray-300 hover:border-green-700"
+                    }`}
+                  >
+                    <h3 className="font-semibold text-lg">{method.title}</h3>
+                  </button>
+                ))}
+              </div>
+              <button
+                onClick={() => setShowLocalPayments(false)}
+                className="mt-6 w-full bg-green-900 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-800"
+              >
+                Back to International Payments
+              </button>
+            </div>
+
+            {/* Selected payment method details */}
+            <div className="md:w-2/3">
+              {selectedLocalMethod && (
+                <>
+                  <h2 className="text-2xl font-bold mb-4 text-green-900">
+                    {localPaymentMethods[selectedLocalMethod].title} Instructions
+                  </h2>
+                  <div className="bg-green-50 p-6 rounded-lg">
+                    <ol className="list-decimal pl-5 space-y-2 text-gray-700">
+                      {localPaymentMethods[selectedLocalMethod].instructions.map((step, index) => (
+                        <li key={index} className="mb-2">{step}</li>
+                      ))}
+                    </ol>
+                    {selectedLocalMethod === "banktransfer" && (
+                      <p className="mt-4 font-semibold">
+                        Please email your deposit slip to donations@bhaso.org for receipt
+                      </p>
+                    )}
                   </div>
-                </form>
-              </div>
-            </>
-          ) : (
-            <div className="flex gap-10">
-              {/* Left: Local payment method cards */}
-              <div className="flex-1 max-w-md">
-                {localPaymentMethodsList}
-              </div>
-
-              {/* Right: Local payment instructions */}
-              <div className="flex-1">
-                {selectedLocalPaymentDetails}
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Right Sidebar */}
-        <div className="w-full max-w-sm flex flex-col gap-6">
-          <div className="bg-green-900/5 rounded-lg p-6 shadow-lg flex flex-col gap-4">
-            <img
-              src="https://images.pexels.com/photos/1231265/pexels-photo-1231265.jpeg"
-              alt="Raise Funds For Clean & Healthy Food"
-              className="rounded-lg w-full object-cover h-40"
-            />
-            <div>
-              <div className="inline-block bg-green-800 text-white text-xs uppercase px-3 py-1 rounded-full mb-2">
-                Food
-              </div>
-              <h3 className="font-bold text-lg mb-3">
-                Raise Funds For Clean & Healthy Food
-              </h3>
-
-              {/* Donation progress bar */}
-              <div className="w-full bg-green-200 rounded-full h-6 mb-2 overflow-hidden">
-                <div
-                  className="bg-green-800 h-6 text-white text-sm font-semibold flex items-center justify-center"
-                  style={{ width: `${progressPercent}%` }}
-                >
-                  {progressPercent}%
-                </div>
-              </div>
-              <div className="flex justify-between text-green-700 font-semibold text-sm mb-4">
-                <span>${donationRaised.toLocaleString()} raised</span>
-                <span>Goal: ${donationGoal.toLocaleString()}</span>
-              </div>
+                </>
+              )}
             </div>
           </div>
-
-          <div className="bg-green-900/5 rounded-lg p-6 shadow-lg flex items-center gap-4">
-            <img
-              src="https://randomuser.me/api/portraits/men/75.jpg"
-              alt="Organizer"
-              className="w-14 h-14 rounded-full"
-            />
-            <div>
-              <p className="text-green-900 font-semibold">
-                Organizer: Kumbirai P Mahaso
-              </p>
-              <p className="text-green-900 text-sm mt-1">
-                123 Samora Machel Ave, Harare, Zimbabwe
-              </p>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );

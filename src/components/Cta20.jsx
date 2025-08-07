@@ -1,88 +1,122 @@
 "use client";
 
-import { Button, Input, Textarea } from "@relume_io/relume-ui";
+import { Button, Input, Textarea, Select } from "@relume_io/relume-ui";
 import React from "react";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export function Cta20() {
   return (
-    <section
-      id="relume"
-      className="relative bg-white text-black px-[5%] py-16 md:py-24 lg:py-28"
-    >
-      <div className="container mx-auto flex flex-col lg:flex-row items-start gap-10">
-        {/* Form side */}
-        <div className="w-full lg:w-1/2 bg-green-800 p-8 rounded-lg shadow-lg text-white">
-          {/* Heading and paragraph */}
-          <div className="mb-8">
-            <h2 className="mb-4 text-2xl md:text-3xl font-semibold leading-tight">
-              Stay Updated with BHASO
+    <section className="relative w-full bg-green-900">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.pexels.com/photos/20457262/pexels-photo-20457262.jpeg')",
+        }}
+      />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/30" />
+
+      {/* Content container */}
+      <div className="relative max-w-7xl mx-auto px-4 py-16 flex justify-end">
+        <div className="w-full max-w-md bg-green-700 p-8 rounded-lg shadow-xl">
+          <div className="mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">
+              Join BHASO's Community
             </h2>
-            <p className="text-sm md:text-base text-green-200">
-              Subscribe to our newsletter and stay informed about our efforts to
-              combat HIV/AIDS and climate change. You can also leave a short
-              message if you have questions.
+            <p className="mt-2 text-green-100">
+              Connect with us to receive updates, volunteer opportunities, and
+              learn how you can support our mission for healthier communities in
+              Zimbabwe.
             </p>
           </div>
 
-          {/* Form */}
-          <form className="grid grid-cols-1 gap-4">
-            <Input
-              id="name"
-              type="text"
-              placeholder="Full Name"
-              required
-              className="text-white placeholder-green-300 border-white focus:ring-white focus:border-white"
-            />
+          <form className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Input
+                id="firstName"
+                type="text"
+                placeholder="First Name"
+                required
+                className="bg-white/10 border-green-600 text-white placeholder-green-200 focus:ring-green-400 focus:border-green-400"
+              />
+              <Input
+                id="lastName"
+                type="text"
+                placeholder="Last Name"
+                required
+                className="bg-white/10 border-green-600 text-white placeholder-green-200 focus:ring-green-400 focus:border-green-400"
+              />
+            </div>
+
             <Input
               id="email"
               type="email"
               placeholder="Email Address"
               required
-              className="text-white placeholder-green-300 border-white focus:ring-white focus:border-white"
+              className="bg-white/10 border-green-600 text-white placeholder-green-200 focus:ring-green-400 focus:border-green-400"
             />
+
             <Input
               id="phone"
               type="tel"
-              placeholder="Phone Number (optional)"
-              className="text-white placeholder-green-300 border-white focus:ring-white focus:border-white"
-            />
-            <Textarea
-              id="message"
-              placeholder="Any message or inquiry?"
-              rows={3}
-              className="text-white placeholder-green-300 border-white focus:ring-white focus:border-white"
+              placeholder="Phone Number"
+              className="bg-white/10 border-green-600 text-white placeholder-green-200 focus:ring-green-400 focus:border-green-400"
             />
 
-            <Button
-              title="Subscribe"
-              type="submit"
-              className="bg-green-900 text-white hover:bg-green-950"
-            >
-              Subscribe
-            </Button>
+          
+
+            <div className="flex items-center">
+              <input
+                id="newsletter"
+                type="checkbox"
+                className="h-4 w-4 text-green-600 focus:ring-green-500 border-green-300 rounded"
+              />
+              <label
+                htmlFor="newsletter"
+                className="ml-2 block text-sm text-green-100"
+              >
+                Subscribe to our monthly newsletter
+              </label>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Button
+                type="submit"
+                className="bg-white text-green-700 hover:bg-green-100 flex-1"
+              >
+                Submit
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                className="border-white text-white hover:bg-green-600 flex-1"
+                onClick={() =>
+                  window.open("https://www.bhaso.org/donate", "_blank")
+                }
+              >
+                Donate Now
+              </Button>
+            </div>
           </form>
 
-          <p className="mt-2 text-xs text-green-300 text-center">
-            By clicking Subscribe you're confirming that you agree with our{" "}
-            <a href="#" className="underline text-green-100">
-              Terms and Conditions
-            </a>
-            .
-          </p>
-        </div>
-
-        {/* Google Maps side */}
-        <div className="w-full lg:w-1/2 rounded-lg overflow-hidden shadow-lg">
-          <iframe
-            title="Map of Zimbabwe"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12626790.07295316!2d25.011463278142245!3d-19.015438021268196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1936933e7f9c3461%3A0x89b51d33f88eaaed!2sZimbabwe!5e0!3m2!1sen!2s!4v1690769612345!5m2!1sen!2s"
-            width="100%"
-            height="400"
-            loading="lazy"
-            className="border-0"
-            allowFullScreen
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          <div className="mt-6 flex flex-col items-center">
+            <p className="text-sm text-green-200 mb-3">
+              Follow us on social media:
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="text-white hover:text-green-300">
+                <FaFacebook size={20} />
+              </a>
+              <a href="#" className="text-white hover:text-green-300">
+                <FaTwitter size={20} />
+              </a>
+              <a href="#" className="text-white hover:text-green-300">
+                <FaInstagram size={20} />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

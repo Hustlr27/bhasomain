@@ -5,42 +5,30 @@ import { Button } from "@relume_io/relume-ui";
 
 export function Cta8() {
   return (
-    <section
-      className="relative px-[5%] py-16 md:py-24 lg:py-28 text-white flex items-center justify-center text-center"
-      style={{
-        backgroundImage:
-          "url('https://images.pexels.com/photos/6191559/pexels-photo-6191559.jpeg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-3xl">
-        <h2 className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
-          Join Our Mission Today
+    <section className="bg-green-50 py-16 md:py-24 lg:py-32">
+      <div className="container mx-auto px-[5%] text-center max-w-3xl">
+        <h2 className="mb-6 text-3xl md:text-4xl font-bold text-green-900">
+          Join BHASO's Mission
         </h2>
-        <p className="text-lg md:text-xl text-white/90 mb-8">
-          Support our fight against HIV/AIDS and climate change. Whether you volunteer,
-          spread awareness, or simply stay informed, your voice matters. Together, we can
-          build healthier, more resilient communities across Zimbabwe and beyond.
+        <p className="mb-8 text-lg text-gray-700">
+          Your support helps us deliver life-changing HIV programs, climate resilience initiatives, 
+          and gender equality advocacy across Zimbabwe.
         </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Button
-            className="bg-white text-green-900 hover:bg-green-100 font-medium px-6 py-3 rounded-md text-sm w-full sm:w-auto"
-            onClick={() => alert("Volunteer signup coming soon!")}
+            className="bg-green-700 hover:bg-green-200 text-white px-8 py-3"
+            onClick={() => window.open('https://www.bhaso.org/donate', '_blank')}
           >
-            Become a Volunteer
+            Donate Now
           </Button>
-
+          
           <Button
-            className="bg-green-800 text-white hover:bg-green-700 font-medium px-6 py-3 rounded-md text-sm w-full sm:w-auto"
-            onClick={() => alert("Signup feature coming soon!")}
+            variant="secondary"
+            className="border-green-700 text-green-700 hover:bg-green-100 px-8 py-3"
+            onClick={() => window.open('https://www.bhaso.org/volunteer', '_blank')}
           >
-            Sign Up for Updates
+            Volunteer With Us
           </Button>
         </div>
       </div>

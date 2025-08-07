@@ -13,19 +13,19 @@ export function Layout237() {
           <div className="bg-green-900 p-6 rounded-md text-white font-bold text-center">
             Vision
             <p className="mt-3 font-normal text-sm">
-              To empower communities in Zimbabwe with sustainable solutions for health and environment.
+              A healthy and resilient community free from HIV/AIDS and climate vulnerabilities by 2027.
             </p>
           </div>
-          <div className="bg-green-800 p-6 rounded-md text-white font-bold text-center">
+          <div className="bg-green-900 p-6 rounded-md text-white font-bold text-center">
             Mission
             <p className="mt-3 font-normal text-sm">
-              Deliver education, support, and resources that address HIV/AIDS and climate challenges holistically.
+              To improve HIV and health outcomes while alleviating poverty and fostering resilience through integrated community programs.
             </p>
           </div>
-          <div className="bg-green-700 p-6 rounded-md text-white font-bold text-center">
-            Pillar
+          <div className="bg-green-900 p-6 rounded-md text-white font-bold text-center">
+            Strategic Pillars
             <p className="mt-3 font-normal text-sm">
-              We focus on community-led initiatives fostering resilience through health awareness and climate adaptation.
+              Wellness, Climate Justice, Gender & Human Rights, Strategic Information, and Resource Mobilization
             </p>
           </div>
         </div>
@@ -34,8 +34,8 @@ export function Layout237() {
           {/* Left side bigger image */}
           <div className="flex justify-center">
             <img
-              src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
-              alt="Community support"
+              src="src/assets/bhaso1.png"
+              alt="BHASO community health workers"
               className="rounded-lg shadow-lg w-full max-w-[600px] h-auto"
             />
           </div>
@@ -46,16 +46,16 @@ export function Layout237() {
               About BHASO
             </p>
             <h2 className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight text-green-900">
-              Empowering Communities Through Sustainable Action
+              Pioneering Community Health & Climate Resilience Since 1992
             </h2>
             <p className="mb-8 text-lg leading-relaxed text-black">
-              BHASO has a rich history of working across Zimbabwe to improve health outcomes and environmental sustainability. Our programs focus on HIV/AIDS awareness, climate adaptation, and community resilience, providing education, support, and resources to build stronger communities.
+              Batanai HIV & AIDS Services Organisation (BHASO) is a Zimbabwean leader in HIV/AIDS response and climate justice. We implement innovative models like SWAG and CHASA to deliver comprehensive health services, promote gender equality, and build climate-resilient communities across four provinces. Our work aligns with the Global AIDS Strategy 2021-2026 and Zimbabwe's national health priorities.
             </p>
 
             {/* Buttons aligned left with text */}
             <div className="flex gap-6">
               <Button className="bg-green-700 hover:bg-green-600 text-white px-6 py-3">
-                Donate
+                Support Our Work
               </Button>
               <Button
                 variant="link"
@@ -63,7 +63,7 @@ export function Layout237() {
                 size="link"
                 className="text-green-700 hover:text-green-900"
               >
-                Learn More
+                View Strategic Plan
               </Button>
             </div>
           </div>
