@@ -89,10 +89,10 @@ export function Layout12() {
             {/* Buttons aligned left */}
             <div className="flex gap-4">
               <button className="bg-green-900 text-white px-6 py-3 rounded-md text-lg hover:bg-green-800 transition">
-                Donate
+              Learn More
               </button>
               <button className="border border-gray-400 text-gray-700 px-6 py-3 rounded-md text-lg hover:bg-gray-100 transition">
-                Volunteer
+                Donate
               </button>
             </div>
           </div>
