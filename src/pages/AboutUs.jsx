@@ -7,7 +7,7 @@ import { Layout245 } from "../components/Layout245";
 import { Layout12 } from "../components/Layout12";
 import { Content28 } from "../components/Content28";
 import { Testimonial5 } from "../components/Testimonial5";
-
+import { Cta8 } from "../components/Cta8";
 
 
 export default function AboutUs() {
@@ -20,7 +20,7 @@ export default function AboutUs() {
       <Content28 />
       <Testimonial5 />
       <Team2 />
-
+      <Cta8 />
     </div>
   );
 }
