@@ -7,32 +7,32 @@ export function Layout1() {
     {
       title: "Wellness",
       description: "Comprehensive HIV/TB services, mental health support, and NCD prevention",
-      icon: "🩺",
-      color: "bg-blue-100",
+      icon: "",
+      color: "bg-green-900",
     },
     {
       title: "Climate Justice",
       description: "Addressing climate impacts on health through sustainable agriculture and resilience programs",
-      icon: "🌱",
-      color: "bg-green-100",
+      icon: "",
+      color: "bg-green-900",
     },
     {
       title: "Gender & Human Rights",
       description: "Reducing GBV, promoting equality, and protecting rights of marginalized groups",
-      icon: "⚖️",
-      color: "bg-purple-100",
+      icon: "",
+      color: "bg-green-900",
     },
     {
       title: "Strategic Information",
       description: "Data-driven programming and research to enhance our impact",
-      icon: "📊",
-      color: "bg-yellow-100",
+      icon: "",
+      color: "bg-green-900",
     },
     {
       title: "Resource Mobilization",
       description: "Ensuring sustainable funding to continue our vital work",
-      icon: "🤝",
-      color: "bg-red-100",
+      icon: "",
+      color: "bg-green-900",
     },
   ];
 
@@ -47,7 +47,7 @@ export function Layout1() {
           >
             <div className="text-4xl mb-4">{pillar.icon}</div>
             <h3 className="text-xl font-semibold mb-2">{pillar.title}</h3>
-            <p className="text-gray-700">{pillar.description}</p>
+            <p className="text-white">{pillar.description}</p>
           </div>
         ))}
       </div>

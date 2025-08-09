@@ -61,7 +61,7 @@ export function Header1() {
       {/* Content with fade transition */}
       <div className={`relative z-10 h-full flex items-center justify-center text-center px-[5%] transition-opacity duration-1000 ${fade ? "opacity-0" : "opacity-100"}`}>
         <div className="max-w-3xl">
-          <h1 className="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl text-white">
+          <h1 className="mb-4 text-6xl font-bold md:text-6xl lg:text-6xl text-white">
             {currentSlide.heading}
           </h1>
           <p className="text-lg mb-6 max-w-2xl mx-auto text-white">

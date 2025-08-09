@@ -55,7 +55,7 @@ export function Blog55() {
         <div className="mb-12 max-w-xl">
           <p className="mb-3 font-semibold text-green-700 uppercase">BHASO Insights</p>
           <h1 className="mb-4 text-3xl font-bold text-green-900 md:text-5xl">
-            Latest News & Updates
+             News & Updates
           </h1>
           <p className="text-gray-600">Updates on our 2023-2027 strategic pillars and programs.</p>
         </div>

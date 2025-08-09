@@ -4,7 +4,7 @@ import React from "react";
 
 export function Cta89() {
   return (
-    <section className="py-16 px-4 bg-gray-900 text-white">
+    <section className="py-16 px-4 bg-grayg-900 text-white">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6">Join Us in Creating Healthier Communities</h2>
         <p className="text-xl text-gray-300 mb-8">

@@ -35,10 +35,10 @@ export function Header62() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
-        <p className="mb-4 text-xl uppercase tracking-widest text-green-300 font-semibold">
+        <p className="mb-4 text-xl uppercase tracking-widest text-green-900 font-semibold">
           Our Work in Zimbabwe
         </p>
-        <h1 className="text-5xl md:text-6xl font-bold mb-4">
+        <h1 className="text-5xl md:text-5xl font-bold mb-4">
           Creating Healthier, More Resilient Communities
         </h1>
         <p className="max-w-2xl mx-auto text-lg mb-6 text-white">

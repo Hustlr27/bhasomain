@@ -49,7 +49,7 @@ export function Navbar2() {
             <img
               src="https://www.bhaso.org/images/BHASO-logo-236.png"
               alt="Logo"
-              className="h-10 w-auto"
+              className="h-15 w-auto"
             />
           </Link>
           <div className="flex items-center gap-4 lg:hidden">
@@ -92,19 +92,19 @@ export function Navbar2() {
         >
           <Link
             to="/"
-            className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2 hover:text-green-700 transition-colors duration-200"
+            className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2 hover:text-green-900 transition-colors duration-200"
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="block py-3 text-md lg:px-4 lg:py-2 lg:text-base hover:text-green-700 transition-colors duration-200"
+            className="block py-3 text-md lg:px-4 lg:py-2 lg:text-base hover:text-green-500 transition-colors duration-200"
           >
             About Us
           </Link>
           <Link
             to="/our-work"
-            className="block py-3 text-md lg:px-4 lg:py-2 lg:text-base hover:text-green-700 transition-colors duration-200"
+            className="block py-3 text-md lg:px-4 lg:py-2 lg:text-base hover:text-green-900 transition-colors duration-200"
           >
             Our Work
           </Link>

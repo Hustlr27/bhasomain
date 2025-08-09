@@ -5,7 +5,7 @@ import { Button } from "@relume_io/relume-ui";
 
 export function Cta8() {
   return (
-    <section className="bg-green-50 py-16 md:py-24 lg:py-32">
+    <section className="bg-white py-16 md:py-24 lg:py-32">
       <div className="container mx-auto px-[5%] text-center max-w-3xl">
         <h2 className="mb-6 text-3xl md:text-4xl font-bold text-green-900">
           Join BHASO's Mission

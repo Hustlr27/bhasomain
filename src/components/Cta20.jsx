@@ -1,12 +1,42 @@
 "use client";
 
-import { Button, Input, Textarea, Select } from "@relume_io/relume-ui";
-import React from "react";
+import { Button, Input } from "@relume_io/relume-ui";
+import React, { useState, useEffect } from "react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
+const volunteerHighlights = [
+  {
+    title: "Community Health Educator",
+    description:
+      "Help educate rural communities on HIV prevention and support testing efforts. Make a direct impact with your voice and passion.",
+  },
+  {
+    title: "Agriculture Field Trainer",
+    description:
+      "Teach climate-smart farming techniques to smallholder farmers. Empower sustainable agriculture and help communities thrive.",
+  },
+  {
+    title: "Youth Mentor",
+    description:
+      "Mentor adolescent girls and young women, fostering life skills and HIV prevention awareness through our DREAMS program.",
+  },
+];
+
 export function Cta20() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % volunteerHighlights.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const { title, description } = volunteerHighlights[currentIndex];
+
   return (
-    <section className="relative w-full bg-green-900">
+    <section className="relative w-full bg-green-900 min-h-[500px]">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -19,7 +49,14 @@ export function Cta20() {
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Content container */}
-      <div className="relative max-w-7xl mx-auto px-4 py-16 flex justify-end">
+      <div className="relative max-w-7xl mx-auto px-4 py-16 flex justify-between items-center gap-12">
+        {/* Left side - rotating heading and paragraph */}
+        <div className="max-w-xl text-white">
+          <h2 className="text-4xl font-bold mb-4">{title}</h2>
+          <p className="text-green-100 text-lg">{description}</p>
+        </div>
+
+        {/* Right side - form */}
         <div className="w-full max-w-md bg-green-700 p-8 rounded-lg shadow-xl">
           <div className="mb-6">
             <h2 className="text-2xl md:text-3xl font-bold text-white">
@@ -64,8 +101,6 @@ export function Cta20() {
               placeholder="Phone Number"
               className="bg-white/10 border-green-600 text-white placeholder-green-200 focus:ring-green-400 focus:border-green-400"
             />
-
-          
 
             <div className="flex items-center">
               <input
