@@ -8,6 +8,7 @@ import AboutUs from "./pages/AboutUs";
 import OurWork from "./pages/OurWork";
 import GetInvolved from "./pages/GetInvolved";
 import BlogPosts from "./pages/BlogPosts";
+import BlogPost from "./pages/BlogPost"; // ✅ new page
 import ContactUs from "./pages/ContactUs";
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/our-work" element={<OurWork />} />
         <Route path="/get-involved" element={<GetInvolved />} />
         <Route path="/blog" element={<BlogPosts />} />
+        <Route path="/blog/:id" element={<BlogPost />} /> {/* ✅ single post route */}
         <Route path="/contact" element={<ContactUs />} />
       </Routes>
 

@@ -3,6 +3,7 @@
 import { Button } from "@relume_io/relume-ui";
 import React from "react";
 import { RxChevronRight } from "react-icons/rx";
+import { Link } from "react-router-dom"; 
 
 export function Layout192() {
   return (
@@ -29,18 +30,22 @@ export function Layout192() {
               training, and gender equality programs across four provinces. Our community-centered approach ensures 
               sustainable impact aligned with Zimbabwe's National Development Strategy and Global AIDS targets.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button className="bg-green-800 text-white px-6 py-3 rounded-md hover:bg-green-700 text-sm font-medium">
-                View Our Strategic Plan
-                <RxChevronRight className="ml-1" size={18} />
-              </Button>
-              <Button 
-                variant="secondary" 
-                className="border border-green-800 text-green-800 px-6 py-3 rounded-md hover:bg-green-50 text-sm font-medium"
-              >
-                Our Programs
-              </Button>
-            </div>
+          <div className="flex flex-wrap gap-4">
+  <Link
+    to="/our-work"
+    className="bg-green-800 text-white px-6 py-3 rounded-md hover:bg-green-700 text-sm font-medium flex items-center"
+  >
+    View Our Strategic Plan
+    <RxChevronRight className="ml-1" size={18} />
+  </Link>
+
+  <Link
+    to="/about"
+    className="border border-green-800 text-green-800 px-6 py-3 rounded-md hover:bg-green-50 text-sm font-medium inline-block text-center"
+  >
+    Our Programs
+  </Link>
+</div>
           </div>
         </div>
       </div>

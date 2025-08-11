@@ -1,102 +1,229 @@
 "use client";
 
 import React, { useState } from "react";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 const programs = [
   {
     id: "wellness",
-    title: "Wellness",
-    image: "https://images.pexels.com/photos/6646934/pexels-photo-6646934.jpeg",
-    description:
-      "Our wellness program is centered on enhancing the physical, emotional, and social well-being of individuals and communities. We take a holistic approach by combining mental health support, preventive care, and community-driven initiatives. From organizing local health camps to providing accessible therapy resources, the wellness program builds resilient communities capable of supporting one another. We also partner with local organizations to ensure that our approach is inclusive, culturally sensitive, and tailored to the unique needs of each group we serve.",
-  },
-  {
-    id: "education",
-    title: "Education",
-    image: "https://images.pexels.com/photos/4144223/pexels-photo-4144223.jpeg",
-    description:
-      "Education is the foundation of empowerment. Our education program bridges learning gaps and expands access to quality resources. We focus on early childhood education, after-school support, and adult literacy. With mobile classrooms and hubs, we bring learning directly to underserved areas and reduce dropout rates. Our efforts ensure education remains relevant and inclusive for all.",
+    title: "HIV/TB Management",
+    image: "https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg",
+    shortDesc: "Comprehensive HIV and TB prevention, testing, and treatment programs",
+    fullDesc: [
+      "BHASO implements community-driven HIV/TB programs ensuring equitable access to services with focus on early diagnosis and treatment adherence.",
+      "Our differentiated service delivery models reach vulnerable populations across Zimbabwe with 95% viral suppression rates among clients.",
+      "Key components:",
+      "- Community ART Refill Groups (CARGs)",
+      "- Out-of-facility medication distribution",
+      "- Psychosocial support groups",
+      "- TB screening and treatment linkage"
+    ],
+    stats: "1.2M Zimbabweans on ART with 95% viral suppression",
+    commitment: "6+ months preferred",
+    skills: ["Health education", "Counseling", "Community engagement"]
   },
   {
     id: "climate",
-    title: "Climate Action",
-    image: "https://images.pexels.com/photos/1557286/pexels-photo-1557286.jpeg",
-    description:
-      "The climate action program drives community-led solutions for sustainability. We promote renewable energy, sustainable farming, and reforestation. Through education and training, we empower people to protect their environment. Every community has a role to play in climate resilience—and we help them act on it.",
+    title: "Climate Justice",
+    image: "https://images.pexels.com/photos/3182755/pexels-photo-3182755.jpeg",
+    shortDesc: "Agroecology and climate-resilient farming practices",
+    fullDesc: [
+      "We promote sustainable agriculture through training in climate-smart techniques, helping smallholder farmers adapt to changing weather patterns.",
+      "Program highlights:",
+      "- Training 5,000+ farmers in agroecology",
+      "- Establishing community seed banks",
+      "- Promoting water conservation techniques",
+      "- Supporting nutrition gardens for PLHIV",
+      "- Income-strengthening activities"
+    ],
+    stats: "5,000+ farmers trained in sustainable methods",
+    commitment: "Seasonal (3-6 months)",
+    skills: ["Agriculture", "Training", "Climate resilience"]
   },
   {
-    id: "entrepreneurship",
-    title: "Entrepreneurship",
-    image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
-    description:
-      "Our entrepreneurship program supports innovation and independence. We provide training, funding, and mentorship for small businesses and startups. Especially focused on marginalized communities, we help turn ideas into sustainable businesses that uplift local economies.",
+    id: "gender",
+    title: "Gender & Human Rights",
+    image: "https://images.pexels.com/photos/6077326/pexels-photo-6077326.jpeg",
+    shortDesc: "Reducing GBV and discrimination against marginalized groups",
+    fullDesc: [
+      "Our programs address gender-based violence and promote rights for women, youth, LGBTQ+ communities through:",
+      "- Establishing 20+ advocacy groups",
+      "- Providing legal aid services",
+      "- Economic empowerment programs",
+      "- Community sensitization campaigns",
+      "- Safe spaces for vulnerable populations",
+      "We've achieved 40% reduction in GBV incidents in our operational areas since 2020."
+    ],
+    stats: "40% reduction in GBV incidents since 2020",
+    commitment: "Flexible options available",
+    skills: ["Advocacy", "Gender sensitivity", "Community organizing"]
   },
   {
-    id: "advocacy",
-    title: "Advocacy",
-    image: "https://images.pexels.com/photos/4668483/pexels-photo-4668483.jpeg",
-    description:
-      "The advocacy program builds power through grassroots campaigns and leadership training. We empower communities to push for systemic change through education, rights awareness, and strategic partnerships with policymakers. Every voice matters, and we help amplify them.",
-  },
+    id: "information",
+    title: "Strategic Information",
+    image: "https://images.pexels.com/photos/5905449/pexels-photo-5905449.jpeg",
+    shortDesc: "Data-driven programming and research",
+    fullDesc: [
+      "BHASO strengthens evidence-based decision making through:",
+      "- Robust monitoring & evaluation systems",
+      "- Community-based research initiatives",
+      "- Data collection and analysis training",
+      "- Digital health solutions",
+      "- Knowledge management platforms",
+      "Our research center produces actionable insights that shape Zimbabwe's health and climate policies."
+    ],
+    stats: "7 research papers published in 2023",
+    commitment: "Project-based or ongoing",
+    skills: ["Data collection", "Analysis", "Research methods"]
+  }
 ];
 
 export function Layout12() {
-  const [selectedProgram, setSelectedProgram] = useState(programs[0]);
+  const [expandedProgram, setExpandedProgram] = useState(null);
+  const [showFullDetails, setShowFullDetails] = useState(false);
+
+  const handleProgramClick = (programId) => {
+    if (expandedProgram === programId) {
+      setExpandedProgram(null);
+      setShowFullDetails(false);
+    } else {
+      setExpandedProgram(programId);
+      setShowFullDetails(false);
+    }
+  };
 
   return (
-    <section className="px-[5%] pb-20 bg-white">
-      <div className="container mx-auto">
+    <section className="px-[5%] py-16 bg-white">
+      <div className="container mx-auto max-w-7xl">
         {/* Section Heading */}
-        <h2 className="text-4xl font-bold text-center mb-10 text-green-900">
-          Our Programs
-        </h2>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-green-900 mb-4">
+            Our Strategic Programs
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Click on any program to learn more about BHASO's key initiatives aligned with our 2023-2027 Strategic Plan
+          </p>
+        </div>
 
-        {/* Program Selector Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Program Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {programs.map((program) => (
-            <button
+            <div 
               key={program.id}
-              onClick={() => setSelectedProgram(program)}
-              className={`px-4 py-2 rounded-md font-medium border transition ${
-                selectedProgram.id === program.id
-                  ? "bg-green-900 text-white border-green-900"
-                  : "text-green-900 border-green-900 hover:bg-green-100"
-              }`}
+              onClick={() => handleProgramClick(program.id)}
+              className={`relative overflow-hidden rounded-lg shadow-md cursor-pointer h-96 group transition-all duration-300 ${expandedProgram === program.id ? 'ring-4 ring-green-700' : ''}`}
             >
-              {program.title}
-            </button>
+              {/* Program Image */}
+              <img
+                src={program.image}
+                alt={program.title}
+                className="w-full h-full object-cover absolute inset-0"
+              />
+              
+              {/* Green Hover Overlay (Bottom Up Animation) */}
+              <div className={`absolute bottom-0 left-0 right-0 bg-green-900 bg-opacity-90 text-white p-6 transition-all duration-500 ${expandedProgram === program.id ? 'h-full' : 'h-1/3 group-hover:h-2/3'}`}>
+                <h3 className="text-xl font-bold mb-2">{program.title}</h3>
+                <p className="text-sm mb-4">{program.shortDesc}</p>
+                
+                {/* Expanded Content */}
+                {expandedProgram === program.id && (
+                  <div className={`transition-opacity duration-300 ${showFullDetails ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
+                    <div className="space-y-3">
+                      {program.fullDesc.map((item, index) => (
+                        <p key={index} className="text-sm">{item}</p>
+                      ))}
+                      <div className="pt-2">
+                        <p className="font-semibold">Impact:</p>
+                        <p className="text-sm">{program.stats}</p>
+                      </div>
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {program.skills.map((skill, i) => (
+                          <span key={i} className="bg-green-800 text-white px-2 py-1 rounded-full text-xs">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                {/* See More/Less Button */}
+                {expandedProgram === program.id && (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowFullDetails(!showFullDetails);
+                    }}
+                    className="absolute bottom-4 left-6 flex items-center text-sm font-medium"
+                  >
+                    {showFullDetails ? (
+                      <>
+                        <span>Show Less</span>
+                        <FiChevronUp className="ml-1" />
+                      </>
+                    ) : (
+                      <>
+                        <span>See More</span>
+                        <FiChevronDown className="ml-1" />
+                      </>
+                    )}
+                  </button>
+                )}
+                
+                {/* Initial Hover Prompt */}
+                {expandedProgram !== program.id && (
+                  <div className="absolute bottom-4 left-6 text-sm font-medium animate-pulse">
+                    Click to learn more
+                  </div>
+                )}
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Program Detail */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          {/* Left Image */}
-          <div>
-            <img
-              src={selectedProgram.image}
-              alt={selectedProgram.title}
-              className="rounded-xl w-full h-[400px] md:h-[500px] object-cover"
-            />
-          </div>
-
-          {/* Right Content */}
-          <div className="text-lg leading-relaxed">
-            <h3 className="text-3xl font-bold text-green-900 mb-6 text-left">
-              {selectedProgram.title}
-            </h3>
-            <p className="text-gray-700 mb-6">{selectedProgram.description}</p>
-
-            {/* Buttons aligned left */}
-            <div className="flex gap-4">
-              <button className="bg-green-900 text-white px-6 py-3 rounded-md text-lg hover:bg-green-800 transition">
-              Learn More
-              </button>
-              <button className="border border-gray-400 text-gray-700 px-6 py-3 rounded-md text-lg hover:bg-gray-100 transition">
-                Donate
-              </button>
+        {/* Selected Program Details (for larger screens) */}
+        {expandedProgram && (
+          <div className="hidden lg:block bg-green-50 rounded-xl p-8 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="md:col-span-2">
+                <h3 className="text-2xl font-bold text-green-900 mb-4">
+                  {programs.find(p => p.id === expandedProgram).title} Program Details
+                </h3>
+                <div className="space-y-4">
+                  {programs.find(p => p.id === expandedProgram).fullDesc.map((item, index) => (
+                    <p key={index} className="text-gray-700">{item}</p>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h4 className="font-bold text-lg mb-4">Quick Facts</h4>
+                <div className="space-y-4">
+                  <div>
+                    <p className="font-semibold">Impact:</p>
+                    <p>{programs.find(p => p.id === expandedProgram).stats}</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold">Time Commitment:</p>
+                    <p>{programs.find(p => p.id === expandedProgram).commitment}</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold">Key Skills:</p>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {programs.find(p => p.id === expandedProgram).skills.map((skill, i) => (
+                        <span key={i} className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <button className="mt-6 w-full bg-green-800 hover:bg-green-700 text-white py-3 rounded-lg">
+                  Volunteer for This Program
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

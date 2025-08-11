@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button } from "@relume_io/relume-ui";
+import { Link } from "react-router-dom"; // <-- import Link
 
 const slides = [
   {
@@ -47,8 +47,10 @@ export function Header1() {
   return (
     <section className="relative w-full h-[720px] overflow-hidden">
       {/* Background Image with fade transition */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ${fade ? "opacity-0" : "opacity-100"}`}
+      <div
+        className={`absolute inset-0 transition-opacity duration-1000 ${
+          fade ? "opacity-0" : "opacity-100"
+        }`}
       >
         <img
           src={currentSlide.image}
@@ -59,7 +61,11 @@ export function Header1() {
       </div>
 
       {/* Content with fade transition */}
-      <div className={`relative z-10 h-full flex items-center justify-center text-center px-[5%] transition-opacity duration-1000 ${fade ? "opacity-0" : "opacity-100"}`}>
+      <div
+        className={`relative z-10 h-full flex items-center justify-center text-center px-[5%] transition-opacity duration-1000 ${
+          fade ? "opacity-0" : "opacity-100"
+        }`}
+      >
         <div className="max-w-3xl">
           <h1 className="mb-4 text-6xl font-bold md:text-6xl lg:text-6xl text-white">
             {currentSlide.heading}
@@ -68,15 +74,21 @@ export function Header1() {
             {currentSlide.text}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button className="bg-green-800 border border-green-600 text-white hover:bg-green-700">
+            {/* Link routing to /OurWork */}
+            <Link
+               to="/our-work"
+              className="bg-green-800 border border-green-600 text-white hover:bg-green-700 px-4 py-2 rounded"
+            >
               Support Our Work
-            </Button>
-            <Button
-              variant="secondary"
-              className="border border-white text-white hover:bg-white hover:text-green-900"
+            </Link>
+
+            {/* Link routing to #donate section on homepage */}
+            <Link
+              to="/#Cta19"
+              className="border border-white text-white hover:bg-white hover:text-green-900 px-4 py-2 rounded"
             >
               Donate Now
-            </Button>
+            </Link>
           </div>
         </div>
       </div>

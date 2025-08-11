@@ -1,9 +1,13 @@
 "use client";
-
-import { Button } from "@relume_io/relume-ui";
 import React from "react";
+// For RxChevronRight (from react-icons/rx)
 import { RxChevronRight } from "react-icons/rx";
 
+// For FiChevronLeft (from react-icons/fi)
+import { FiChevronLeft } from "react-icons/fi";
+
+// For Link (from react-router-dom)
+import { Link } from "react-router-dom";
 export function Layout6() {
   return (
     <section id="gender-rights" className="bg-white px-[5%] py-16 md:py-24 lg:py-28">
@@ -44,18 +48,21 @@ export function Layout6() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-4 mt-8">
-              <Button className="bg-green-800 hover:bg-green-700 text-white px-6 py-3">
-                Join Our Advocacy
-                <RxChevronRight className="ml-1" size={18} />
-              </Button>
-              <Button 
-                variant="secondary" 
-                className="border border-green-800 text-green-800 hover:bg-green-50 px-6 py-3"
-              >
-                Success Stories
-              </Button>
-            </div>
+           <div className="flex flex-wrap gap-4 mt-8">
+  <Link
+    to="/about"
+    className="bg-green-800 hover:bg-green-700 text-white px-6 py-3 rounded-md flex items-center"
+  >
+    Join Our Advocacy
+    <RxChevronRight className="ml-1" size={18} />
+  </Link>
+  <Link
+    to="/#Testimonial15"
+    className="border border-green-800 text-green-800 hover:bg-green-50 px-6 py-3 rounded-md inline-block text-center"
+  >
+    Success Stories
+  </Link>
+</div>
           </div>
 
           {/* Image - now full height and larger */}

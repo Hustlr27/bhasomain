@@ -1,7 +1,6 @@
 "use client";
 
-import { Button } from "@relume_io/relume-ui";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 export function Header62() {
   const images = [
@@ -10,48 +9,57 @@ export function Header62() {
     "https://images.pexels.com/photos/6238028/pexels-photo-6238028.jpeg", // Climate impact
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
   return (
     <section
       id="relume"
-      className="relative h-[70vh] w-full flex items-center justify-center text-white transition-all duration-1000 ease-in-out"
-      style={{
-        backgroundImage: `url(${images[currentIndex]})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="flex flex-col md:flex-row items-center justify-between px-6 py-12 max-w-7xl mx-auto"
     >
-      
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-4">
-        <p className="mb-4 text-xl uppercase tracking-widest text-green-900 font-semibold">
+      {/* Left side - Text */}
+      <div className="md:w-1/2 text-green-900">
+        <p className="mb-6 text-2xl md:text-3xl uppercase tracking-widest font-semibold">
           Our Work in Zimbabwe
         </p>
-        <h1 className="text-5xl md:text-5xl font-bold mb-4">
+        <h1 className="text-5xl md:text-6xl font-bold mb-8">
           Creating Healthier, More Resilient Communities
         </h1>
-        <p className="max-w-2xl mx-auto text-lg mb-6 text-white">
+        <p className="mb-4 text-lg leading-relaxed">
           Since 1992, BHASO has been at the forefront of HIV/AIDS response,
           climate justice, and gender equality initiatives across Zimbabwe's
-          most vulnerable communities.
+          most vulnerable communities. We focus on empowering local leaders,
+          advocating for sustainable development, and providing essential
+          health services to those most in need.
         </p>
-        <div className="flex justify-center gap-4">
-          <Button style={{ backgroundColor: "#047857", color: "white" }}>
-            Our Strategic Plan
-          </Button>
-          <Button variant="secondary">See Our Impact</Button>
+        <p className="text-lg leading-relaxed">
+          Our programs include community education, environmental conservation,
+          gender-based violence prevention, and improving access to healthcare.
+          We work hand-in-hand with grassroots organizations to foster lasting
+          change and build a more equitable future.
+        </p>
+      </div>
+
+      {/* Right side - Images container */}
+      <div className="md:w-1/2 relative flex items-center justify-center mt-1 md:mt-0" style={{ minHeight: "440px" }}>
+        {/* Two stacked square images behind */}
+        <div className="absolute left-12 top-0 flex flex-col gap-4 z-0">
+          <img
+            src={images[1]}
+            alt="Community meeting"
+            className="w-40 h-50 object-cover  shadow-md"
+          />
+          <img
+            src={images[2]}
+            alt="Climate impact"
+            className="w-40 h-50 object-cover  shadow-md"
+          />
         </div>
+
+        {/* Large rectangle image in front */}
+        <img
+          src={images[0]}
+          alt="Healthcare workers"
+          className="w-140 h-60 object-cover  shadow-lg relative z-10"
+          style={{ marginLeft: "16rem" }}
+        />
       </div>
     </section>
   );

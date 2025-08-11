@@ -3,6 +3,7 @@
 import { Button } from "@relume_io/relume-ui";
 import React from "react";
 import { RxChevronRight } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 export function Layout237() {
   return (
@@ -53,19 +54,22 @@ export function Layout237() {
             </p>
 
             {/* Buttons aligned left with text */}
-            <div className="flex gap-6">
-              <Button className="bg-green-700 hover:bg-green-600 text-white px-6 py-3">
-                Support Our Work
-              </Button>
-              <Button
-                variant="link"
-                iconRight={<RxChevronRight />}
-                size="link"
-                className="text-green-700 hover:text-green-900"
-              >
-                View Strategic Plan
-              </Button>
-            </div>
+           <div className="flex gap-6">
+  <Link
+    to="/about"
+    className="bg-green-700 hover:bg-green-600 text-white px-6 py-3 inline-block text-center"
+  >
+    Learn More
+  </Link>
+
+  <Link
+    to="/our-work"
+    className="flex items-center text-green-700 hover:text-green-900 px-0 py-0"
+  >
+    View Strategic Plan
+    <RxChevronRight className="ml-1" />
+  </Link>
+</div>
           </div>
         </div>
       </div>

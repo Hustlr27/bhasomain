@@ -53,28 +53,48 @@ export function Navbar2() {
             />
           </Link>
           <div className="flex items-center gap-4 lg:hidden">
-            <Button className="bg-green-900 text-white border border-green-900 px-4 py-1" title="Donate" size="sm">
-              Donate
-            </Button>
+            {/* Mobile Donate Button linked to /cta19 */}
+            <Link to="/#Cta19">
+              <Button
+                className="bg-green-900 text-white border border-green-900 px-4 py-1"
+                title="Donate"
+                size="sm"
+              >
+                Donate
+              </Button>
+            </Link>
+
             <button
               className="-mr-2 flex size-12 flex-col items-center justify-center lg:hidden"
               onClick={useActive.toggleMobileMenu}
             >
               {/* burger icon */}
-              <motion.span className="my-[3px] h-0.5 w-6 bg-green-900" animate={useActive.animateMobileMenuButtonSpan} variants={{
-                open: { translateY: 8, transition: { delay: 0.1 } },
-                rotatePhase: { rotate: -45, transition: { delay: 0.2 } },
-                closed: { translateY: 0, rotate: 0, transition: { duration: 0.2 } }
-              }} />
-              <motion.span className="my-[3px] h-0.5 w-6 bg-green-900" animate={useActive.animateMobileMenu} variants={{
-                open: { width: 0, transition: { duration: 0.1 } },
-                closed: { width: "1.5rem", transition: { delay: 0.3, duration: 0.2 } }
-              }} />
-              <motion.span className="my-[3px] h-0.5 w-6 bg-green-900" animate={useActive.animateMobileMenuButtonSpan} variants={{
-                open: { translateY: -8, transition: { delay: 0.1 } },
-                rotatePhase: { rotate: 45, transition: { delay: 0.2 } },
-                closed: { translateY: 0, rotate: 0, transition: { duration: 0.2 } }
-              }} />
+              <motion.span
+                className="my-[3px] h-0.5 w-6 bg-green-900"
+                animate={useActive.animateMobileMenuButtonSpan}
+                variants={{
+                  open: { translateY: 8, transition: { delay: 0.1 } },
+                  rotatePhase: { rotate: -45, transition: { delay: 0.2 } },
+                  closed: { translateY: 0, rotate: 0, transition: { duration: 0.2 } },
+                }}
+              />
+              <motion.span
+                className="my-[3px] h-0.5 w-6 bg-green-900"
+                animate={useActive.animateMobileMenu}
+                variants={{
+                  open: { width: 0, transition: { duration: 0.1 } },
+                  closed: { width: "1.5rem", transition: { delay: 0.3, duration: 0.2 } },
+                }}
+              />
+              <motion.span
+                className="my-[3px] h-0.5 w-6 bg-green-900"
+                animate={useActive.animateMobileMenuButtonSpan}
+                variants={{
+                  open: { translateY: -8, transition: { delay: 0.1 } },
+                  rotatePhase: { rotate: 45, transition: { delay: 0.2 } },
+                  closed: { translateY: 0, rotate: 0, transition: { duration: 0.2 } },
+                }}
+              />
             </button>
           </div>
         </div>
@@ -92,7 +112,7 @@ export function Navbar2() {
         >
           <Link
             to="/"
-            className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2 hover:text-green-900 transition-colors duration-200"
+            className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2 hover:text-green-500 transition-colors duration-200"
           >
             Home
           </Link>
@@ -104,7 +124,7 @@ export function Navbar2() {
           </Link>
           <Link
             to="/our-work"
-            className="block py-3 text-md lg:px-4 lg:py-2 lg:text-base hover:text-green-900 transition-colors duration-200"
+            className="block py-3 text-md lg:px-4 lg:py-2 lg:text-base hover:text-green-500 transition-colors duration-200"
           >
             Our Work
           </Link>
@@ -172,14 +192,17 @@ export function Navbar2() {
           </div>
         </motion.div>
 
+        {/* Desktop Donate Button linked to /cta19 */}
         <div className="hidden justify-self-end lg:block">
-          <Button
-            className="bg-green-900 text-white hover:bg-green-600 border border-green-900 px-6 py-2"
-            title="Donate"
-            size="sm"
-          >
-            Donate
-          </Button>
+          <Link to="/#Cta19">
+            <Button
+              className="bg-green-900 text-white hover:bg-green-600 border border-green-900 px-6 py-2"
+              title="Donate"
+              size="sm"
+            >
+              Donate
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

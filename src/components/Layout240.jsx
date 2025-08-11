@@ -2,7 +2,9 @@
 
 import { Button } from "@relume_io/relume-ui";
 import React, { useState, useRef } from "react";
+import { RxChevronRight } from "react-icons/rx";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { Link } from "react-router-dom";  
 
 export function Layout240() {
   const programs = [
@@ -122,14 +124,22 @@ export function Layout240() {
             {programs[selectedIndex].detailed}
           </p>
 
-          <div className="flex gap-6">
-            <Button className="bg-green-700 hover:bg-green-800 text-white px-6 py-3">
-              Learn About Our Programs
-            </Button>
-            <Button variant="link" className="text-green-700 hover:text-green-900">
-              View Strategic Plan
-            </Button>
-          </div>
+         <div className="flex gap-6">
+  <Link
+    to="/about"
+    className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 inline-block text-center"
+  >
+    Learn About Our Programs
+  </Link>
+
+  <Link
+    to="/our-work"
+    className="flex items-center text-green-700 hover:text-green-900 px-0 py-0"
+  >
+    View Strategic Plan
+    <RxChevronRight className="ml-1" />
+  </Link>
+</div>
         </div>
       </div>
     </section>

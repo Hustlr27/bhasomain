@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "@relume_io/relume-ui";
-
+import { Link } from "react-router-dom";
 export function Cta8() {
   return (
     <section className="bg-white py-16 md:py-24 lg:py-32">
@@ -15,22 +15,21 @@ export function Cta8() {
           and gender equality advocacy across Zimbabwe.
         </p>
         
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button
-            className="bg-green-700 hover:bg-green-200 text-white px-8 py-3"
-            onClick={() => window.open('https://www.bhaso.org/donate', '_blank')}
-          >
-            Donate Now
-          </Button>
-          
-          <Button
-            variant="secondary"
-            className="border-green-700 text-green-700 hover:bg-green-100 px-8 py-3"
-            onClick={() => window.open('https://www.bhaso.org/volunteer', '_blank')}
-          >
-            Volunteer With Us
-          </Button>
-        </div>
+      <div className="flex flex-col sm:flex-row justify-center gap-4">
+  <Link
+    to="/#Cta19"
+    className="bg-green-700 hover:bg-green-200 text-white px-8 py-3 inline-block text-center"
+  >
+    Donate Now
+  </Link>
+
+  <Link
+    to="/get-involved"
+    className="border border-green-700 text-green-700 hover:bg-green-100 px-8 py-3 inline-block text-center"
+  >
+    Volunteer With Us
+  </Link>
+</div>
       </div>
     </section>
   );

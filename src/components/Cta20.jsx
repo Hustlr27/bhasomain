@@ -123,37 +123,21 @@ export function Cta20() {
               >
                 Submit
               </Button>
-              <Button
-                type="button"
-                variant="secondary"
+              <Link
+               to="/#Cta19"
                 className="border-white text-white hover:bg-green-600 flex-1"
                 onClick={() =>
                   window.open("https://www.bhaso.org/donate", "_blank")
                 }
               >
                 Donate Now
-              </Button>
+              </Link>
             </div>
           </form>
 
-          <div className="mt-6 flex flex-col items-center">
-            <p className="text-sm text-green-200 mb-3">
-              Follow us on social media:
-            </p>
-            <div className="flex gap-4">
-              <a href="#" className="text-white hover:text-green-300">
-                <FaFacebook size={20} />
-              </a>
-              <a href="#" className="text-white hover:text-green-300">
-                <FaTwitter size={20} />
-              </a>
-              <a href="#" className="text-white hover:text-green-300">
-                <FaInstagram size={20} />
-              </a>
-            </div>
           </div>
         </div>
-      </div>
+     
     </section>
   );
 }
