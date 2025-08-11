@@ -24,20 +24,58 @@ const volunteerHighlights = [
 
 export function Cta20() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+  });
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % volunteerHighlights.length);
-    }, 5000); // Change every 5 seconds
-
+      setCurrentIndex(
+        (prevIndex) => (prevIndex + 1) % volunteerHighlights.length
+      );
+    }, 5000);
     return () => clearInterval(intervalId);
   }, []);
 
   const { title, description } = volunteerHighlights[currentIndex];
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        "http://localhost:5173/api/joinCommunityContactForm",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
+        alert("Contact information submitted successfully");
+        setFormData({ firstName: "", lastName: "", email: "", phone: "" });
+      } else {
+        alert("Failed to submit contact information.");
+      }
+    } catch (err) {
+      console.error("Error submitting", err);
+      alert("Failed to submit contact information.");
+    }
+  };
+
   return (
     <section className="relative w-full bg-green-900 min-h-[500px]">
-      {/* Background image */}
+      {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -45,18 +83,17 @@ export function Cta20() {
             "url('https://images.pexels.com/photos/20457262/pexels-photo-20457262.jpeg')",
         }}
       />
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/30" />
 
-      {/* Content container */}
+      {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 py-16 flex justify-between items-center gap-12">
-        {/* Left side - rotating heading and paragraph */}
+        {/* Left - Rotating content */}
         <div className="max-w-xl text-white">
           <h2 className="text-4xl font-bold mb-4">{title}</h2>
           <p className="text-green-100 text-lg">{description}</p>
         </div>
 
-        {/* Right side - form */}
+        {/* Right - Form */}
         <div className="w-full max-w-md bg-green-700 p-8 rounded-lg shadow-xl">
           <div className="mb-6">
             <h2 className="text-2xl md:text-3xl font-bold text-white">
@@ -69,21 +106,25 @@ export function Cta20() {
             </p>
           </div>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Input
                 id="firstName"
                 type="text"
                 placeholder="First Name"
+                value={formData.firstName}
+                onChange={handleChange}
                 required
-                className="bg-white/10 border-green-600 text-white placeholder-green-200 focus:ring-green-400 focus:border-green-400"
+                className="bg-white/10 border-green-600 text-white placeholder-green-200"
               />
               <Input
                 id="lastName"
                 type="text"
                 placeholder="Last Name"
+                value={formData.lastName}
+                onChange={handleChange}
                 required
-                className="bg-white/10 border-green-600 text-white placeholder-green-200 focus:ring-green-400 focus:border-green-400"
+                className="bg-white/10 border-green-600 text-white placeholder-green-200"
               />
             </div>
 
@@ -91,26 +132,30 @@ export function Cta20() {
               id="email"
               type="email"
               placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
               required
-              className="bg-white/10 border-green-600 text-white placeholder-green-200 focus:ring-green-400 focus:border-green-400"
+              className="bg-white/10 border-green-600 text-white placeholder-green-200"
             />
 
             <Input
               id="phone"
               type="tel"
               placeholder="Phone Number"
-              className="bg-white/10 border-green-600 text-white placeholder-green-200 focus:ring-green-400 focus:border-green-400"
+              value={formData.phone}
+              onChange={handleChange}
+              className="bg-white/10 border-green-600 text-white placeholder-green-200"
             />
 
             <div className="flex items-center">
               <input
                 id="newsletter"
                 type="checkbox"
-                className="h-4 w-4 text-green-600 focus:ring-green-500 border-green-300 rounded"
+                className="h-4 w-4 text-green-600 border-green-300 rounded"
               />
               <label
                 htmlFor="newsletter"
-                className="ml-2 block text-sm text-green-100"
+                className="ml-2 text-sm text-green-100"
               >
                 Subscribe to our monthly newsletter
               </label>
