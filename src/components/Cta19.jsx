@@ -10,6 +10,10 @@ import {
 } from "@stripe/react-stripe-js";
 
 // Put your Stripe publishable key here
+// STRIPE_SECRET_KEY=sk_test_51RvGIlGcjoUFoNC9MqL9SAvErMkyXFDAm6bHGIn7Q4NV9UbqWcXncExYEsZ8lEDyZBeKjSijSjlb6KxRaXmjdogO00mPsDq7DX
+//PAYPAL_CLIENT_ID=your_paypal_client_id_here
+//PORT=5000
+
 const stripePromise = loadStripe(
   "pk_test_51RvGIlGcjoUFoNC9F4xjaRMbrO0VwvRWZaCLTPbjaPZooOtNSM2u52oAYszmFPMlh3s5EYC7N3xlv3PF9Sy1MNnk007fuAFf5z"
 );
