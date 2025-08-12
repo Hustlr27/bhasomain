@@ -112,19 +112,19 @@ export function Navbar2() {
         >
           <Link
             to="/"
-            className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2 hover:text-green-500 transition-colors duration-200"
+            className="block py-3 text-md font-bold first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2 hover:text-green-500 transition-colors duration-200"
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="block py-3 text-md lg:px-4 lg:py-2 lg:text-base hover:text-green-500 transition-colors duration-200"
+            className="block py-3 text-md font-bold lg:px-4 lg:py-2 lg:text-base hover:text-green-500 transition-colors duration-200"
           >
             About Us
           </Link>
           <Link
             to="/our-work"
-            className="block py-3 text-md lg:px-4 lg:py-2 lg:text-base hover:text-green-500 transition-colors duration-200"
+            className="block py-3 text-md font-bold lg:px-4 lg:py-2 lg:text-base hover:text-green-500 transition-colors duration-200"
           >
             Our Work
           </Link>
@@ -135,7 +135,7 @@ export function Navbar2() {
             onMouseLeave={useActive.closeOnDesktopDropdownMenu}
           >
             <button
-              className="flex w-full items-center justify-center gap-2 py-3 text-md lg:w-auto lg:justify-start lg:px-4 lg:py-2 lg:text-base hover:text-green-700 transition-colors duration-200"
+              className="flex w-full items-center justify-center gap-2 py-3 font-bold text-md lg:w-auto lg:justify-start lg:px-4 lg:py-2 lg:text-base hover:text-green-700 transition-colors duration-200"
               onClick={useActive.openOnMobileDropdownMenu}
             >
               <span>Get Involved</span>
@@ -171,19 +171,19 @@ export function Navbar2() {
               >
                 <Link
                   to="/get-involved"
-                  className="block py-3 text-center lg:px-4 lg:py-2 lg:text-left hover:bg-green-700 hover:text-white transition-colors duration-200"
+                  className="block py-3 text-center font-bold lg:px-4 lg:py-2 lg:text-left hover:bg-green-700 hover:text-white transition-colors duration-200"
                 >
                   Volunteer
                 </Link>
                 <Link
                   to="/blog"
-                  className="block py-3 text-center lg:px-4 lg:py-2 lg:text-left hover:bg-green-700 hover:text-white transition-colors duration-200"
+                  className="block py-3 text-center font-bold lg:px-4 lg:py-2 lg:text-left hover:bg-green-700 hover:text-white transition-colors duration-200"
                 >
                   Blog Posts
                 </Link>
                 <Link
                   to="/contact"
-                  className="block py-3 text-center lg:px-4 lg:py-2 lg:text-left hover:bg-green-700 hover:text-white transition-colors duration-200"
+                  className="block py-3 text-center font-bold lg:px-4 lg:py-2 lg:text-left hover:bg-green-700 hover:text-white transition-colors duration-200"
                 >
                   Contact Us
                 </Link>
@@ -196,7 +196,7 @@ export function Navbar2() {
         <div className="hidden justify-self-end lg:block">
           <Link to="/#Cta19">
             <Button
-              className="bg-green-900 text-white hover:bg-green-600 border border-green-900 px-6 py-2"
+              className="bg-green-900 font-bold text-white hover:bg-green-600  px-6 py-2"
               title="Donate"
               size="sm"
             >

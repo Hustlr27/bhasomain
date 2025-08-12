@@ -1,74 +1,139 @@
 "use client";
 
-import { Button } from "@relume_io/relume-ui";
 import React from "react";
+import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
+import { Link } from "react-router-dom"; // Using react-router instead of Next.js Link
 
 export function Footer12() {
   return (
-    <footer className="px-[5%] py-12 md:py-16 lg:py-20 bg-green-800 text-white">
-      <div className="container">
-        <div className="border-b border-green-700">
-          <div className="mb-12 grid grid-cols-1 gap-x-[8vw] gap-y-12 md:mb-16 md:gap-y-16 lg:mb-20 lg:grid-cols-[1fr_0.5fr] lg:gap-y-20">
-            {/* Left column */}
-            <div className="max-w-md">
-              <h1 className="mb-4 text-3xl font-bold md:mb-5 md:text-4xl lg:text-5xl">
-                Building Resilient Communities Through Our Strategic Pillars
-              </h1>
-              <p className="text-sm md:text-base text-green-200">
-                Join BHASO in our 2023-2027 mission to advance health equity, climate justice, 
-                and human rights in Zimbabwe through innovative community programs.
+    <footer className="px-[5%] py-12 md:py-16 lg:py-20 bg-green-900 text-white">
+      <div className="container mx-auto max-w-7xl">
+        <div className="border-b border-green-700 pb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            {/* About Column */}
+            <div className="lg:col-span-2">
+              <h3 className="text-xl font-bold mb-4">About BHASO</h3>
+              <p className="text-green-200 mb-6">
+                Batanai HIV & AIDS Services Organisation (BHASO) is a pioneering Zimbabwean NGO 
+                established in 1992. We implement innovative community health and climate justice 
+                programs across four provinces.
               </p>
-              <div className="mt-6 flex flex-wrap gap-4">
-                <Button 
-                  className="px-4 py-2 bg-green-700 hover:bg-green-600 text-white text-sm"
-                  onClick={() => window.open('/strategic-plan', '_blank')}
+              <div className="flex flex-wrap gap-4">
+                <Link 
+                  to="/strategic-plan" 
+                  className="px-4 py-2 bg-green-800 hover:bg-green-700 text-white rounded text-sm transition"
                 >
-                  View Our Strategic Plan
-                </Button>
-                <Button 
-                  variant="secondary"
-                  className="px-4 py-2 border-green-300 text-green-300 hover:bg-green-700 text-sm"
-                  onClick={() => window.open('/contact', '_blank')}
+                  View Strategic Plan
+                </Link>
+                <Link 
+                  to="/contact" 
+                  className="px-4 py-2 border border-green-300 text-green-300 hover:bg-green-800 rounded text-sm transition"
                 >
                   Partner With Us
-                </Button>
+                </Link>
               </div>
             </div>
 
-            {/* Right column */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
-              <ul>
-                {["Our Approach", "HIV/TB Programs", "Climate Initiatives", "Gender Equality", "Research & Data"].map((item) => (
-                  <li key={item} className="py-1.5 text-sm font-medium">
-                    <a href="#" className="hover:underline text-green-200">{item}</a>
-                  </li>
-                ))}
-              </ul>
-              <ul>
-                {["Get Involved", "Volunteer", "Donate", "Resources", "Contact"].map((item) => (
-                  <li key={item} className="py-1.5 text-sm font-medium">
-                    <a href="#" className="hover:underline text-green-200">{item}</a>
-                  </li>
-                ))}
+            {/* Quick Links Column */}
+            <div>
+              <h3 className="text-xl font-bold mb-4">Our Programs</h3>
+              <ul className="space-y-2 text-green-200">
+                <li>
+                  <Link to="/programs/hiv-tb" className="hover:underline">HIV/TB Management</Link>
+                </li>
+                <li>
+                  <Link to="/programs/climate" className="hover:underline">Climate Justice</Link>
+                </li>
+                <li>
+                  <Link to="/programs/gender" className="hover:underline">Gender & Human Rights</Link>
+                </li>
+                <li>
+                  <Link to="/programs/research" className="hover:underline">Strategic Information</Link>
+                </li>
+                <li>
+                  <Link to="/programs/all" className="hover:underline">All Programs</Link>
+                </li>
               </ul>
             </div>
-          </div>
 
-          {/* Logo row */}
-          <div className="flex justify-between pb-6 md:pb-8">
-            <a href="#">
-              <img
-                src="https://www.bhaso.org/images/BHASO-logo-236.png"
-                alt="BHASO Logo"
-                className="h-8"
-              />
-            </a>
+            {/* Get Involved Column */}
+            <div>
+              <h3 className="text-xl font-bold mb-4">Get Involved</h3>
+              <ul className="space-y-2 text-green-200">
+                <li>
+                  <Link to="/volunteer" className="hover:underline">Volunteer</Link>
+                </li>
+                <li>
+                  <Link to="/donate" className="hover:underline">Donate</Link>
+                </li>
+                <li>
+                  <Link to="/partners" className="hover:underline">Partnerships</Link>
+                </li>
+                <li>
+                  <Link to="/resources" className="hover:underline">Resources</Link>
+                </li>
+                <li>
+                  <Link to="/news" className="hover:underline">News & Updates</Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Column */}
+            <div>
+              <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+              <div className="space-y-3 text-green-200">
+                <div className="flex items-start">
+                  <FiMapPin className="mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <p>12 Batanai Avenue</p>
+                    <p>Harare, Zimbabwe</p>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <FiPhone className="mr-3" />
+                  <div>
+                    <p>+263 242 123 456</p>
+                    <p>+263 772 987 654 (Mobile)</p>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <FiMail className="mr-3" />
+                  <div>
+                    <p>info@bhaso.org</p>
+                    <p>volunteer@bhaso.org</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom row */}
-        <div className="flex flex-col-reverse md:flex-row items-start md:items-center justify-between pt-6 text-xs md:text-sm gap-4">
-          <p>© {new Date().getFullYear()} BHASO. Advancing health equity and climate justice in Zimbabwe.</p>
+        {/* Bottom Row */}
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 gap-4">
+          <div className="flex items-center">
+            <Link to="/">
+              <img 
+                src="/bhaso-logo-white.png" // Make sure this is in your public folder
+                alt="BHASO Logo" 
+                className="h-10 mr-6"
+              />
+            </Link>
+            <p className="text-sm text-green-300">
+              © {new Date().getFullYear()} BHASO. All rights reserved.
+            </p>
+          </div>
+          
+          <div className="flex space-x-6">
+            <Link to="/privacy" className="text-sm text-green-300 hover:underline">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="text-sm text-green-300 hover:underline">
+              Terms of Service
+            </Link>
+            <Link to="/sitemap" className="text-sm text-green-300 hover:underline">
+              Sitemap
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

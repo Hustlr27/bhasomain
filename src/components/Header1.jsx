@@ -66,8 +66,8 @@ export function Header1() {
           fade ? "opacity-0" : "opacity-100"
         }`}
       >
-        <div className="max-w-3xl">
-          <h1 className="mb-4 text-6xl font-bold md:text-6xl lg:text-6xl text-white">
+        <div className="max-w-6xl">
+          <h1 className="mb-4 text-8xl font-bold md:text-8xl lg:text-8xl text-white">
             {currentSlide.heading}
           </h1>
           <p className="text-lg mb-6 max-w-2xl mx-auto text-white">
@@ -77,7 +77,7 @@ export function Header1() {
             {/* Link routing to /OurWork */}
             <Link
                to="/our-work"
-              className="bg-green-800 border border-green-600 text-white hover:bg-green-700 px-4 py-2 rounded"
+              className="bg-green-900  text-white hover:bg-green-700 px-4 py-2 rounded"
             >
               Support Our Work
             </Link>
@@ -85,7 +85,7 @@ export function Header1() {
             {/* Link routing to #donate section on homepage */}
             <Link
               to="/#Cta19"
-              className="border border-white text-white hover:bg-white hover:text-green-900 px-4 py-2 rounded"
+              className="border border-white text-white hover:bg-white hover:text-green-700 px-4 py-2 rounded"
             >
               Donate Now
             </Link>
