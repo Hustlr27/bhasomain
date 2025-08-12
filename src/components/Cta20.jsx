@@ -2,7 +2,7 @@
 
 import { Button, Input } from "@relume_io/relume-ui";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link for routing   
+import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const volunteerHighlights = [
@@ -29,7 +29,7 @@ export function Cta20() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % volunteerHighlights.length);
-    }, 5000); // Change every 5 seconds
+    }, 5000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -50,16 +50,16 @@ export function Cta20() {
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Content container */}
-      <div className="relative max-w-7xl mx-auto px-4 py-16 flex justify-between items-center gap-12">
-        {/* Left side - rotating heading and paragraph */}
-        <div className="max-w-xl text-white">
+      <div className="relative max-w-7xl mx-auto px-4 py-16 flex flex-col lg:flex-row justify-between items-center gap-12">
+        {/* Left side */}
+        <div className="max-w-xl text-white text-center lg:text-left">
           <h2 className="text-4xl font-bold mb-4">{title}</h2>
           <p className="text-green-100 text-lg">{description}</p>
         </div>
 
         {/* Right side - form */}
         <div className="w-full max-w-md bg-green-700 p-8 rounded-lg shadow-xl">
-          <div className="mb-6">
+          <div className="mb-6 text-center lg:text-left">
             <h2 className="text-2xl md:text-3xl font-bold text-white">
               Join BHASO's Community
             </h2>
@@ -70,10 +70,22 @@ export function Cta20() {
             </p>
           </div>
 
-          <form className="space-y-4">
+          <form
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            className="space-y-4"
+          >
+            {/* Web3Forms Access Key */}
+            <input
+              type="hidden"
+              name="access_key"
+              value="dea587fe-1343-4a7f-96d3-03ea027a7f52"
+            />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Input
                 id="firstName"
+                name="firstName"
                 type="text"
                 placeholder="First Name"
                 required
@@ -81,6 +93,7 @@ export function Cta20() {
               />
               <Input
                 id="lastName"
+                name="lastName"
                 type="text"
                 placeholder="Last Name"
                 required
@@ -90,6 +103,7 @@ export function Cta20() {
 
             <Input
               id="email"
+              name="email"
               type="email"
               placeholder="Email Address"
               required
@@ -98,6 +112,7 @@ export function Cta20() {
 
             <Input
               id="phone"
+              name="phone"
               type="tel"
               placeholder="Phone Number"
               className="bg-white/10 border-green-600 text-white placeholder-green-200 focus:ring-green-400 focus:border-green-400"
@@ -106,6 +121,7 @@ export function Cta20() {
             <div className="flex items-center">
               <input
                 id="newsletter"
+                name="newsletter"
                 type="checkbox"
                 className="h-4 w-4 text-green-600 focus:ring-green-500 border-green-300 rounded"
               />
@@ -125,8 +141,8 @@ export function Cta20() {
                 Submit
               </Button>
               <Link
-               to="/#Cta19"
-                className="border-white text-white hover:bg-green-600 flex-1"
+                to="/#Cta19"
+                className="border-white text-white hover:bg-green-600 flex-1 text-center py-2 rounded-lg"
                 onClick={() =>
                   window.open("https://www.bhaso.org/donate", "_blank")
                 }
@@ -135,10 +151,8 @@ export function Cta20() {
               </Link>
             </div>
           </form>
-
-          </div>
         </div>
-     
+      </div>
     </section>
   );
 }

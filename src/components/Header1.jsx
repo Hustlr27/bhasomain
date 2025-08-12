@@ -84,7 +84,7 @@ export function Header1() {
 
             {/* Link routing to #donate section on homepage */}
             <Link
-              to="/#Cta19"
+              to="/donate"
               className="border border-white text-white hover:bg-white hover:text-green-700 px-4 py-2 rounded"
             >
               Donate Now
