@@ -7,9 +7,12 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+//pk_test_51RvGIlGcjoUFoNC9F4xjaRMbrO0VwvRWZaCLTPbjaPZooOtNSM2u52oAYszmFPMlh3s5EYC7N3xlv3PF9Sy1MNnk007fuAFf5z
+//STRIPE_SECRET_KEY=sk_test_51RvGIlGcjoUFoNC9MqL9SAvErMkyXFDAm6bHGIn7Q4NV9UbqWcXncExYEsZ8lEDyZBeKjSijSjlb6KxRaXmjdogO00mPsDq7DX
 
+//PORT=5000
 const stripePromise = loadStripe(
-  "pk_test_51RvGIlGcjoUFoNC9F4xjaRMbrO0VwvRWZaCLTPbjaPZooOtNSM2u52oAYszmFPMlh3s5EYC7N3xlv3PF9Sy1MNnk007fuAFf5z"
+  ""
 );
 
 function CheckoutForm({ donationType, currency, amount, formData }) {
@@ -113,7 +116,7 @@ export function Cta19() {
   };
 
   return (
-    <section className="flex flex-col lg:flex-row min-h-screen bg-white" id="donate">
+    <section className="flex flex-col lg:flex-row min-h-screen bg-white" id="Cta19">
       {/* Left Section - Motivational Content */}
       <div className="w-full lg:w-1/2 bg-green-900 text-white p-12 flex flex-col justify-center">
         <div className="max-w-md mx-auto">

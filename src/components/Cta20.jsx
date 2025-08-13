@@ -25,6 +25,7 @@ const volunteerHighlights = [
 
 export function Cta20() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [status, setStatus] = useState("");
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -36,9 +37,32 @@ export function Cta20() {
 
   const { title, description } = volunteerHighlights[currentIndex];
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setStatus("✅ Thank you! Your message has been sent.");
+        e.target.reset();
+      } else {
+        setStatus("❌ Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setStatus("❌ Network error. Please try again later.");
+    }
+  };
+
   return (
     <section className="relative w-full bg-green-900 min-h-[500px]">
-      {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -46,18 +70,14 @@ export function Cta20() {
             "url('https://images.pexels.com/photos/20457262/pexels-photo-20457262.jpeg')",
         }}
       />
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/30" />
 
-      {/* Content container */}
       <div className="relative max-w-7xl mx-auto px-4 py-16 flex flex-col lg:flex-row justify-between items-center gap-12">
-        {/* Left side */}
         <div className="max-w-xl text-white text-center lg:text-left">
           <h2 className="text-4xl font-bold mb-4">{title}</h2>
           <p className="text-green-100 text-lg">{description}</p>
         </div>
 
-        {/* Right side - form */}
         <div className="w-full max-w-md bg-green-700 p-8 rounded-lg shadow-xl">
           <div className="mb-6 text-center lg:text-left">
             <h2 className="text-2xl md:text-3xl font-bold text-white">
@@ -70,16 +90,11 @@ export function Cta20() {
             </p>
           </div>
 
-          <form
-            action="https://api.web3forms.com/submit"
-            method="POST"
-            className="space-y-4"
-          >
-            {/* Web3Forms Access Key */}
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="hidden"
               name="access_key"
-              value="dea587fe-1343-4a7f-96d3-03ea027a7f52"
+              value="YOUR_ACCESS_KEY_HERE"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -150,6 +165,10 @@ export function Cta20() {
                 Donate Now
               </Link>
             </div>
+
+            {status && (
+              <p className="text-sm text-green-100 mt-2">{status}</p>
+            )}
           </form>
         </div>
       </div>
