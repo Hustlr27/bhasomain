@@ -1,5 +1,4 @@
-// controllers/joinCommunityController.js
-const { insertContact } = require("../models/joinCommunityModel");
+const Contact = require("../models/joinCommunityModel");
 const nodemailer = require("nodemailer");
 
 exports.createContact = async (req, res) => {
@@ -12,8 +11,7 @@ exports.createContact = async (req, res) => {
         .json({ error: "First name, last name, and email are required." });
     }
 
-    // Save to PostgreSQL
-    const newContact = await insertContact({
+    const newContact = new Contact({
       firstName,
       lastName,
       phone,
@@ -21,30 +19,40 @@ exports.createContact = async (req, res) => {
       subscribeNewsLetter: subscribeNewsLetter || false,
     });
 
-    // Send email notification
+    await newContact.save();
+
     const transporter = nodemailer.createTransport({
-      service: "gmail", // Or use SMTP
+      service: "gmail", //
       auth: {
-        user: process.env.EMAIL_USER, // Your email
-        pass: process.env.EMAIL_PASS, // App password or real password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
-    const mailOptions = {
+    const userMailOptions = {
       from: process.env.EMAIL_USER,
-      to: email, // Send confirmation to user
+      to: email,
       subject: "Thank you for joining BHASO's Community",
       text: `Hi ${firstName},\n\nThank you for joining BHASO's Community. We'll keep you updated on upcoming events and opportunities.\n\nRegards,\nBHASO Team`,
     };
 
-    await transporter.sendMail(mailOptions);
+    const adminMailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.ADMIN_EMAIL,
+      subject: "New Community Contact Signup",
+      text: `A new member has joined the community:\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${
+        phone || "N/A"
+      }\nSubscribed to Newsletter: ${subscribeNewsLetter ? "Yes" : "No"}`,
+    };
 
-    res
-      .status(201)
-      .json({
-        message: "Contact saved and email sent successfully",
-        contact: newContact,
-      });
+    await transporter.sendMail(userMailOptions);
+    await transporter.sendMail(adminMailOptions);
+
+    res.status(201).json({
+      message:
+        "Contact saved, confirmation email sent to user, and notification sent to admin",
+      contact: newContact,
+    });
   } catch (err) {
     console.error("Error creating contact:", err);
     res.status(500).json({ error: "Internal Server Error" });
