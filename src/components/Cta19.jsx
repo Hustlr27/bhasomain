@@ -1,6 +1,125 @@
 "use client";
 
 import React, { useState } from "react";
+<<<<<<< Updated upstream
+=======
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  Elements,
+  CardElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
+//pk_test_51RvGIlGcjoUFoNC9F4xjaRMbrO0VwvRWZaCLTPbjaPZooOtNSM2u52oAYszmFPMlh3s5EYC7N3xlv3PF9Sy1MNnk007fuAFf5z
+//STRIPE_SECRET_KEY=sk_test_51RvGIlGcjoUFoNC9MqL9SAvErMkyXFDAm6bHGIn7Q4NV9UbqWcXncExYEsZ8lEDyZBeKjSijSjlb6KxRaXmjdogO00mPsDq7DX
+
+//PORT=5000
+const stripePromise = loadStripe(
+  ""
+);
+
+function CheckoutForm({ donationType, currency, amount, formData }) {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [processing, setProcessing] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setProcessing(true);
+    setError(null);
+    setSuccess(false);
+
+    if (!stripe || !elements) {
+      setError("Stripe.js has not loaded yet.");
+      setProcessing(false);
+      return;
+    }
+
+    // Create PaymentIntent on backend
+    try {
+      const response = await fetch("http://localhost:5000/create-payment-intent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount, currency }),
+      });
+      const { clientSecret, error: backendError } = await response.json();
+
+      if (backendError) {
+        setError(backendError);
+        setProcessing(false);
+        return;
+      }
+
+      // Confirm Card Payment
+      const cardElement = elements.getElement(CardElement);
+      const paymentResult = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: cardElement,
+          billing_details: {
+            name: `${formData.name} ${formData.surname}`,
+            email: formData.email,
+            phone: formData.phone,
+          },
+        },
+      });
+
+      if (paymentResult.error) {
+        setError(paymentResult.error.message);
+        setProcessing(false);
+      } else if (paymentResult.paymentIntent.status === "succeeded") {
+        // Save donation to database
+        try {
+          await fetch("http://localhost:5000/api/donation", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: formData.name,
+              surname: formData.surname,
+              email: formData.email,
+              phone: formData.phone,
+              amount,
+              currency,
+              donationType,
+            }),
+          });
+        } catch (err) {
+          console.error("Error saving donation:", err);
+        }
+
+        setSuccess(true);
+        setProcessing(false);
+      }
+    } catch (err) {
+      setError(err.message);
+      setProcessing(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <CardElement
+        options={{
+          style: {
+            base: { fontSize: "16px", color: "#424770", "::placeholder": { color: "#aab7c4" } },
+            invalid: { color: "#9e2146" },
+          },
+        }}
+      />
+      <button
+        type="submit"
+        disabled={!stripe || processing}
+        className="w-full bg-green-900 text-white py-4 rounded-lg font-semibold hover:bg-green-800 transition-colors"
+      >
+        {processing ? "Processing..." : donationType === "monthly" ? "Become a Monthly Supporter" : "Make a Donation"}
+      </button>
+      {error && <div className="text-red-600 mt-2">{error}</div>}
+      {success && <div className="text-green-600 mt-2">Payment Successful! Thank you!</div>}
+    </form>
+  );
+}
+>>>>>>> Stashed changes
 
 export function Cta19() {
   const [donationType, setDonationType] = useState("monthly");

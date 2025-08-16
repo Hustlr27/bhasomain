@@ -42,6 +42,7 @@ export default function GetInvolved() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+<<<<<<< Updated upstream
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -63,6 +64,67 @@ export default function GetInvolved() {
           <p className="text-xl mb-8">
             Whether you have time, resources, or skills to share, there are many ways to support
             BHASO's mission to create healthier, more resilient communities in Zimbabwe.
+=======
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // ✅ Updated handleSubmit to send to backend
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/volunteer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSuccessMessage("Thank you! Your application has been submitted.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          program: "",
+          experience: "",
+          availability: "",
+        });
+      } else {
+        setErrorMessage("Something went wrong. Please try again.");
+      }
+    } catch {
+      setErrorMessage("Network error. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleProgramClick = (program) => {
+    setSelectedProgram(program);
+  };
+
+  const handleBackToPrograms = () => {
+    setSelectedProgram(null);
+  };
+
+  return (
+    <div className="px-[5%] py-12 md:py-16 lg:py-20 space-y-20">
+      {/* Hero Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="order-2 md:order-1">
+          <h1 className="text-5xl font-bold text-green-800 mb-4">
+            Make a Difference Today
+          </h1>
+          <p className="text-lg text-gray-600 mb-6">
+            At BHASO, we believe in the power of collective action. When you
+            volunteer, you're not just giving your time — you're shaping lives,
+            building stronger communities, and creating a better future.
+>>>>>>> Stashed changes
           </p>
         
         </div>
@@ -126,11 +188,47 @@ export default function GetInvolved() {
                 onClick={() => setSelectedProgram(program.title)}
                 className="px-6 py-3 bg-green-800 hover:bg-green-700 text-white rounded-lg font-medium"
               >
+<<<<<<< Updated upstream
                 Apply Now
+=======
+                Back to all programs
+>>>>>>> Stashed changes
               </button>
             </div>
           </div>
+<<<<<<< Updated upstream
         ))}
+=======
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {volunteerPrograms.map((program, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-lg shadow-md hover:shadow-lg transition overflow-hidden cursor-pointer"
+                onClick={() => handleProgramClick(program)}
+              >
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-green-800 mb-2">
+                    {program.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">{program.description}</p>
+                  <button className="text-green-700 font-medium hover:underline flex items-center">
+                    Learn more
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+>>>>>>> Stashed changes
 
         {/* Volunteer Application Form */}
         <div className="bg-green-50 rounded-xl p-8 md:p-12 mt-16">
@@ -291,7 +389,181 @@ export default function GetInvolved() {
             Contact Our Partnerships Team
           </button>
         </div>
+<<<<<<< Updated upstream
       </section>
+=======
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white p-6 rounded-lg shadow">
+            <div className="flex items-center mb-4">
+              <img 
+                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&auto=format&fit=crop&q=60" 
+                alt="Sarah" 
+                className="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 className="font-bold text-green-800">Sarah K.</h4>
+                <p className="text-sm text-gray-500">HIV/TB Program Volunteer</p>
+              </div>
+            </div>
+            <p className="text-gray-600 italic">
+              "Volunteering with BHASO's HIV awareness program changed my perspective completely..."
+            </p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow">
+            <div className="flex items-center mb-4">
+              <img 
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=60" 
+                alt="James" 
+                className="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 className="font-bold text-green-800">James M.</h4>
+                <p className="text-sm text-gray-500">Climate Initiative Volunteer</p>
+              </div>
+            </div>
+            <p className="text-gray-600 italic">
+              "The tree planting initiative not only helped the environment but connected me with amazing people in my community..."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Volunteer Application Form */}
+      <div
+        id="volunteer-form"
+        className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow"
+      >
+        <h2 className="text-2xl font-bold text-green-800 mb-2">
+          Volunteer Application
+        </h2>
+        <p className="text-gray-600 mb-6">
+          Fill out the form below to start your volunteer journey with us. We'll get back to you within 3 business days.
+        </p>
+        <form
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          onSubmit={handleSubmit} // ✅ Updated here
+        >
+          <div>
+            <label className="block text-gray-700 mb-2">Full Name*</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700 mb-2">Email*</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700 mb-2">Phone Number*</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700 mb-2">Program Interest*</label>
+            <select
+              name="program"
+              value={formData.program}
+              onChange={handleInputChange}
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
+              required
+            >
+              <option value="">Select a program</option>
+              {volunteerPrograms.map((program, i) => (
+                <option key={i} value={program.title}>
+                  {program.title}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="md:col-span-2">
+            <label className="block text-gray-700 mb-2">Relevant Experience*</label>
+            <textarea
+              name="experience"
+              value={formData.experience}
+              onChange={handleInputChange}
+              rows="3"
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
+              required
+            ></textarea>
+          </div>
+
+          <div className="md:col-span-2">
+            <label className="block text-gray-700 mb-2">Availability*</label>
+            <textarea
+              name="availability"
+              value={formData.availability}
+              onChange={handleInputChange}
+              rows="2"
+              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
+              required
+            ></textarea>
+          </div>
+
+          <div className="md:col-span-2">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="px-6 py-3 bg-green-800 hover:bg-green-700 text-white rounded-lg font-medium w-full md:w-auto"
+            >
+              {isSubmitting ? "Submitting..." : "Submit Application"}
+            </button>
+          </div>
+        </form>
+
+        {successMessage && (
+          <p className="mt-4 text-green-600 font-medium">{successMessage}</p>
+        )}
+        {errorMessage && (
+          <p className="mt-4 text-red-600 font-medium">{errorMessage}</p>
+        )}
+      </div>
+
+      {/* Call to Action */}
+      <div className="bg-green-800 text-white text-center py-12 px-6 rounded-lg">
+        <h2 className="text-3xl font-bold mb-4">Ready to Make an Impact?</h2>
+        <p className="max-w-2xl mx-auto mb-6">
+          Join our community of changemakers and help create lasting positive change.
+          Whether you can give a few hours a week or make a long-term commitment,
+          your contribution matters.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="#volunteer-form"
+            className="px-6 py-3 bg-white text-green-800 rounded-lg font-medium hover:bg-gray-100"
+          >
+            Apply Now
+          </a>
+          <a
+            href="#programs"
+            className="px-6 py-3 border border-white text-white rounded-lg font-medium hover:bg-green-700"
+          >
+            Explore Programs
+          </a>
+        </div>
+      </div>
+>>>>>>> Stashed changes
     </div>
   );
 }

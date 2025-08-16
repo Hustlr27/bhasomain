@@ -35,6 +35,43 @@ export function Cta20() {
 
   const { title, description } = volunteerHighlights[currentIndex];
 
+<<<<<<< Updated upstream
+=======
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    const form = e.target;
+  const newsletterChecked = form.newsletter.checked;
+
+  const subscriberData = {
+    firstName: form.firstName.value,
+    lastName: form.lastName.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    newsletter: newsletterChecked,
+  };
+
+  try {
+    const response = await fetch("http://localhost:5000/api/subscriber", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(subscriberData),
+    });
+
+    const data = await response.json();
+      if (data.success) {
+        setStatus("✅ Thank you! Your message has been sent.");
+        form.reset();
+      } else {
+        setStatus("❌ Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setStatus("❌ Network error. Please try again later.");
+    }
+  };
+
+>>>>>>> Stashed changes
   return (
     <section className="relative w-full bg-green-900 min-h-[500px]">
       {/* Background image */}
