@@ -4,26 +4,26 @@ import { Button } from "@relume_io/relume-ui";
 import React, { useState, useRef } from "react";
 import { RxChevronRight } from "react-icons/rx";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { Link } from "react-router-dom";  
+import { Link } from "react-router-dom";
 
 export function Layout240() {
   const programs = [
     {
-      src: "https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg",
-      alt: "HIV/TB Management",
-      title: "HIV/TB Management",
+      src: "src/assets/image348.jpeg",
+      alt: "Health and Wellbeing",
+      title: "Health & Wellbeing",
       desc: "Comprehensive testing, treatment and care programs",
       detailed: "BHASO implements community-driven HIV/TB programs ensuring equitable access to services with focus on early diagnosis and treatment adherence. Our differentiated service delivery models reach vulnerable populations across Zimbabwe.",
     },
     {
-      src: "https://images.pexels.com/photos/3182755/pexels-photo-3182755.jpeg",
+      src: "src/assets/image45.jpeg",
       alt: "Climate Smart Agriculture",
       title: "Climate Justice",
       desc: "Agroecology and climate-resilient farming practices",
       detailed: "We promote sustainable agriculture through training in climate-smart techniques, helping smallholder farmers adapt to changing weather patterns while improving food security and nutrition in vulnerable communities.",
     },
     {
-      src: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg",
+      src: "src/assets/image66.jpeg",
       alt: "Gender Equality",
       title: "Gender & Human Rights",
       desc: "Reducing GBV and discrimination against marginalized groups",
@@ -74,14 +74,14 @@ export function Layout240() {
 
         {/* Cards with navigation arrows */}
         <div className="relative">
-          <button 
+          <button
             onClick={scrollLeft}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-green-900 text-white p-2 rounded-full hover:bg-green-800"
           >
             <FiChevronLeft size={24} />
           </button>
-          
-          <div 
+
+          <div
             ref={scrollRef}
             className="flex gap-4 overflow-x-auto scrollbar-hide py-4 px-2"
             style={{ scrollSnapType: 'x mandatory' }}
@@ -90,9 +90,8 @@ export function Layout240() {
               <div
                 key={i}
                 onClick={() => setSelectedIndex(i)}
-                className={`flex-shrink-0 w-[300px] h-[200px] cursor-pointer transition-all duration-200 ${
-                  i === selectedIndex ? 'ring-4 ring-green-700' : 'opacity-90 hover:opacity-100'
-                }`}
+                className={`flex-shrink-0 w-[300px] h-[200px] cursor-pointer transition-all duration-200 ${i === selectedIndex ? 'ring-4 ring-green-700' : 'opacity-90 hover:opacity-100'
+                  }`}
                 style={{ scrollSnapAlign: 'start' }}
               >
                 <div className="relative w-full h-full">
@@ -110,7 +109,7 @@ export function Layout240() {
             ))}
           </div>
 
-          <button 
+          <button
             onClick={scrollRight}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-green-900 text-white p-2 rounded-full hover:bg-green-800"
           >
@@ -124,22 +123,22 @@ export function Layout240() {
             {programs[selectedIndex].detailed}
           </p>
 
-         <div className="flex gap-6">
-  <Link
-    to="/about"
-    className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 inline-block text-center"
-  >
-    Learn About Our Programs
-  </Link>
+          <div className="flex gap-6">
+            <Link
+              to="/about"
+              className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 inline-block text-center"
+            >
+              Learn About Our Programs
+            </Link>
 
-  <Link
-    to="/our-work"
-    className="flex items-center text-green-700 hover:text-green-900 px-0 py-0"
-  >
-    View Strategic Plan
-    <RxChevronRight className="ml-1" />
-  </Link>
-</div>
+            <Link
+              to="/our-work"
+              className="flex items-center text-green-700 px-20 hover:text-green-900 px-0 py-0"
+            >
+              View Strategic Plan
+              <RxChevronRight className="ml-1" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

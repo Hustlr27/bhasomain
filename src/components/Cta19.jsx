@@ -168,7 +168,7 @@ export function Cta19() {
 
           <div className="relative rounded-lg overflow-hidden h-64">
             <img 
-              src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+              src="src/assets/image43.jpeg" 
               alt="Community support"
               className="w-full h-full object-cover"
             />

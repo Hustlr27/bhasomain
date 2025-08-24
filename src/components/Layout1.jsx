@@ -2,55 +2,54 @@
 
 import React from "react";
 
-export function Layout1() {
-  const pillars = [
+export const Layout1 = () => {
+  const focusAreas = [
     {
-      title: "Wellness",
-      description: "Comprehensive HIV/TB services, mental health support, and NCD prevention",
-      icon: "",
-      color: "bg-green-900",
+      title: "HIV and TB Management",
+      description: "Comprehensive, community-driven programs to manage and prevent the spread of HIV and tuberculosis, ensuring equitable access to testing, treatment, and continuous care.",
+      icon: "🩺"
     },
     {
-      title: "Climate Justice",
-      description: "Addressing climate impacts on health through sustainable agriculture and resilience programs",
-      icon: "",
-      color: "bg-green-900",
+      title: "Gender and Human Rights",
+      description: "Advocating for policies that uphold human rights and improve health outcomes for marginalized populations through evidence-based advocacy.",
+      icon: "⚖️"
     },
     {
-      title: "Gender & Human Rights",
-      description: "Reducing GBV, promoting equality, and protecting rights of marginalized groups",
-      icon: "",
-      color: "bg-green-900",
+      title: "Climate Justice and Resilience",
+      description: "Addressing the disproportionate impact of climate change on vulnerable communities through sustainable practices and adaptation strategies.",
+      icon: "🌍"
     },
     {
-      title: "Strategic Information",
-      description: "Data-driven programming and research to enhance our impact",
-      icon: "",
-      color: "bg-green-900",
+      title: "Mental Health and Psychosocial Support",
+      description: "Providing essential psychosocial support and mental health services to individuals and communities affected by HIV, poverty, and socio-economic challenges.",
+      icon: "🧠"
     },
     {
-      title: "Resource Mobilization",
-      description: "Ensuring sustainable funding to continue our vital work",
-      icon: "",
-      color: "bg-green-900",
+      title: "Food Security and Livelihoods",
+      description: "Promoting climate-smart agricultural practices to improve productivity, diversify crops, and enhance nutrition for smallholder farmers.",
+      icon: "🌾"
     },
+    {
+      title: "Community Systems Strengthening",
+      description: "Empowering local structures with essential skills to monitor, advocate, and demand services related to human rights and health.",
+      icon: "👥"
+    }
   ];
 
   return (
-    <section className="py-16 px-4 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold text-center mb-12">Our Strategic Pillars (2023-2027)</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-        {pillars.map((pillar, index) => (
-          <div 
-            key={index}
-            className={`p-6 rounded-lg shadow-md ${pillar.color} transition-transform hover:scale-105`}
-          >
-            <div className="text-4xl mb-4">{pillar.icon}</div>
-            <h3 className="text-xl font-semibold mb-2">{pillar.title}</h3>
-            <p className="text-white">{pillar.description}</p>
-          </div>
-        ))}
+    <section className="py-16 px-4 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-green-900 text-center mb-12">Our Key Focus Areas</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {focusAreas.map((area, index) => (
+            <div key={index} className="bg-green-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div className="text-4xl mb-4">{area.icon}</div>
+              <h3 className="text-xl font-semibold text-green-900 mb-3">{area.title}</h3>
+              <p className="text-gray-700">{area.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-}
+};

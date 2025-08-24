@@ -10,6 +10,7 @@ import GetInvolved from "./pages/GetInvolved";
 import BlogPosts from "./pages/BlogPosts";
 import BlogPost from "./pages/BlogPost"; // ✅ new page
 import ContactUs from "./pages/ContactUs";
+import Donate from "./pages/Donate";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/blog" element={<BlogPosts />} />
         <Route path="/blog/:id" element={<BlogPost />} /> {/* ✅ single post route */}
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/donate" element={<Donate />} />
       </Routes>
 
       <Footer12 />

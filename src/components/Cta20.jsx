@@ -67,7 +67,7 @@ export function Cta20() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.pexels.com/photos/20457262/pexels-photo-20457262.jpeg')",
+            "url('src/assets/image43.jpeg')",
         }}
       />
       <div className="absolute inset-0 bg-black/30" />

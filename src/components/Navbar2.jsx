@@ -54,7 +54,7 @@ export function Navbar2() {
           </Link>
           <div className="flex items-center gap-4 lg:hidden">
             {/* Mobile Donate Button linked to /cta19 */}
-            <Link to="/#Cta19">
+            <Link to="/donate">
               <Button
                 className="bg-green-900 text-white border border-green-900 px-4 py-1"
                 title="Donate"
@@ -194,7 +194,7 @@ export function Navbar2() {
 
         {/* Desktop Donate Button linked to /cta19 */}
         <div className="hidden justify-self-end lg:block">
-          <Link to="/#Cta19">
+          <Link to="/donate">
             <Button
               className="bg-green-900 font-bold text-white hover:bg-green-600  px-6 py-2"
               title="Donate"

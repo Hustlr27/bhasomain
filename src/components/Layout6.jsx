@@ -22,8 +22,8 @@ export function Layout6() {
               Advancing Equality and Rights for Marginalized Groups
             </h1>
             <p className="mb-6 text-lg text-gray-700 md:mb-8">
-              BHASO's Gender and Human Rights program tackles systemic discrimination against women, youth, 
-              and LGBTQ+ communities in Zimbabwe. Through advocacy, education, and economic empowerment, 
+              BHASO's Gender and Human Rights program tackles systemic discrimination against women and youth 
+       in Zimbabwe. Through advocacy, education, and economic empowerment, 
               we've reduced gender-based violence incidents by 40% in our operational areas since 2020.
             </p>
             
@@ -42,7 +42,7 @@ export function Layout6() {
                   Rights Protection
                 </h6>
                 <p className="text-gray-700">
-                  Operating 20+ advocacy groups supporting sex workers and LGBTQ+ individuals with legal 
+                  Operating 20+ advocacy groups supporting sex workers  individuals with legal 
                   aid and social services.
                 </p>
               </div>
@@ -68,7 +68,7 @@ export function Layout6() {
           {/* Image - now full height and larger */}
           <div className="order-1 lg:order-2 h-full min-h-[400px] lg:min-h-[600px]">
             <img
-              src="https://images.pexels.com/photos/6077326/pexels-photo-6077326.jpeg"
+              src="src/assets/image0.jpeg"
               className="w-full h-full object-cover rounded-lg shadow-xl"
               alt="Women participating in BHASO's empowerment workshop"
             />

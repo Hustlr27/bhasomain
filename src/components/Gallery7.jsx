@@ -11,35 +11,35 @@ export function Gallery7() {
 
   const images = [
     {
-      src: "https://images.pexels.com/photos/7176325/pexels-photo-7176325.jpeg",
+      src: "src/assets/image30.jpeg",
       alt: "Community Health Drive",
     },
     {
-      src: "https://images.pexels.com/photos/7659565/pexels-photo-7659565.jpeg",
+      src: "src/assets/image009.jpeg",
       alt: "Sustainable Farming Initiative",
     },
     {
-      src: "https://images.pexels.com/photos/28101466/pexels-photo-28101466.jpeg",
+      src: "src/assets/image08.jpeg",
       alt: "Climate Education Campaign",
     },
     {
-      src: "https://images.pexels.com/photos/8728317/pexels-photo-8728317.jpeg",
+      src: "src/assets/image3.jpeg",
       alt: "Youth Empowerment Event",
     },
     {
-      src: "https://images.pexels.com/photos/5217880/pexels-photo-5217880.jpeg",
+      src: "src/assets/image006.jpeg",
       alt: "Mental Health Awareness Workshop",
     },
     {
-      src: "https://images.pexels.com/photos/2347266/pexels-photo-2347266.jpeg",
+      src: "src/assets/image16.jpeg",
       alt: "Local Farming Community",
     },
     {
-      src: "https://images.pexels.com/photos/3028997/pexels-photo-3028997.jpeg",
+      src: "src/assets/image14.jpeg",
       alt: "Clean Water Initiative",
     },
     {
-      src: "https://images.pexels.com/photos/1591447/pexels-photo-1591447.jpeg",
+      src: "src/assets/image07.jpeg",
       alt: "Education for All",
     },
   ];

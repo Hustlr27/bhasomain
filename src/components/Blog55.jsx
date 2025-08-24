@@ -5,10 +5,11 @@ import React, { useRef } from "react";
 import { RxChevronUp, RxChevronDown } from "react-icons/rx";
 import { Link } from "react-router-dom";
 
+
 export function Blog55() {
   const mainPost = {
     id: 1,
-    src: "https://images.pexels.com/photos/33011250/pexels-photo-33011250.jpeg",
+    src: "src/assets/image900.jpeg",
     category: "Health & Wellness",
     title: "Innovative HIV Prevention Strategies in Zimbabwe",
     desc: "Exploring BHASO's community-driven approaches to HIV prevention and treatment adherence.",
@@ -17,28 +18,28 @@ export function Blog55() {
   const sidePosts = [
     {
       id: 2,
-      src: "https://images.pexels.com/photos/33023725/pexels-photo-33023725.jpeg",
+      src: "src/assets/image877.jpeg",
       category: "Climate Justice",
       title: "Climate Change Impacts on Health Outcomes",
       desc: "How BHASO integrates climate resilience with HIV programming in vulnerable communities.",
     },
     {
       id: 3,
-      src: "https://images.pexels.com/photos/5789278/pexels-photo-5789278.jpeg",
+      src: "src/assets/image767.jpeg",
       category: "Gender Rights",
       title: "Empowering Women Through Health Initiatives",
       desc: "BHASO's programs addressing gender-based violence and economic empowerment.",
     },
     {
       id: 4,
-      src: "https://images.pexels.com/photos/6646817/pexels-photo-6646817.jpeg",
+      src: "src/assets/image907.jpeg",
       category: "Community Health",
       title: "Strengthening Community Health Systems",
       desc: "The SWAG and CHASA models revolutionizing HIV care in Zimbabwe.",
     },
     {
       id: 5,
-      src: "https://images.pexels.com/photos/3845744/pexels-photo-3845744.jpeg",
+      src: "src/assets/image768.jpeg",
       category: "Strategic Information",
       title: "Data-Driven Approaches to Health Equity",
       desc: "How BHASO uses research and knowledge management to enhance program impact.",
@@ -127,13 +128,14 @@ export function Blog55() {
         </div>
 
         <div className="flex items-center justify-end mt-10 md:mt-14 lg:mt-16">
-          <Button
+          <Link
+          to={"/blog"}
             title="View all"
             variant="secondary"
             className="bg-green-900 text-white hover:bg-green-800"
           >
             View All latest news
-          </Button>
+          </Link>
         </div>
       </div>
     </section>
