@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 
 const backgroundImages = [
-  "src/assets/image66.jpeg",
-  "src/assets/image75.jpeg",
-  "src/assets/image98.jpeg",
+  "/assets/image66.jpeg",
+  "/assets/image75.jpeg",
+  "/assets/image98.jpeg",
 ];
 
 export function Header49() {

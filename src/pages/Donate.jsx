@@ -10,7 +10,7 @@ export default function Donate() {
       {/* HERO SECTION */}
       <section
         className="relative w-full h-[550px] bg-cover bg-center"
-        style={{ backgroundImage: "url('src/assets/image59.jpeg')" }}
+        style={{ backgroundImage: "url('/assets/image59.jpeg')" }}
       >
         <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center px-6">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
@@ -27,25 +27,25 @@ export default function Donate() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Why Your Support Matters</h2>
           <p className="text-lg text-gray-600 mb-12">
-            Every contribution fuels our strategic pillars — from comprehensive HIV/TB management and gender equality to climate justice and community systems strengthening.
+            Every contribution fuels our strategic pillars from comprehensive HIV/TB management and gender equality to climate justice and community systems strengthening.
           </p>
           <div className="grid md:grid-cols-3 gap-10">
             <div className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-              <img src="src/assets/image33.jpeg" alt="Healthcare" className="w-full h-48 object-cover rounded" />
+              <img src="/assets/image33.jpeg" alt="Healthcare" className="w-full h-48 object-cover rounded" />
               <h3 className="text-xl font-semibold mt-4">Health and Wellbeing</h3>
               <p className="text-gray-600 mt-2">
                 Ensuring equitable access to testing, treatment, and continuous care for people living with HIV and TB, focusing on early diagnosis and treatment adherence.
               </p>
             </div>
             <div className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-              <img src="src/assets/image854.jpeg" alt="Climate Action" className="w-full h-48 object-cover rounded" />
+              <img src="/assets/image854.jpeg" alt="Climate Action" className="w-full h-48 object-cover rounded" />
               <h3 className="text-xl font-semibold mt-4">Climate change</h3>
               <p className="text-gray-600 mt-2">
                 Addressing disproportionate climate change impacts on marginalized communities through agroecology and climate-resilient agricultural practices.
               </p>
             </div>
             <div className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-              <img src="src/assets/image78.jpeg" alt="Empowerment" className="w-full h-48 object-cover rounded" />
+              <img src="/assets/image78.jpeg" alt="Empowerment" className="w-full h-48 object-cover rounded" />
               <h3 className="text-xl font-semibold mt-4">Gender and Human Rights</h3>
               <p className="text-gray-600 mt-2">
                 Reducing gender-based violence and enhancing economic opportunities for women, youth, and marginalized communities.
@@ -96,22 +96,22 @@ export default function Donate() {
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="p-6 bg-green-50 rounded-lg">
-              <img src="src/assets/image90.jpeg" alt="SWAG" className="w-full h-40 object-cover rounded mb-3"/>
+              <img src="/assets/image90.jpeg" alt="SWAG" className="w-full h-40 object-cover rounded mb-3"/>
               <h3 className="text-xl font-semibold text-green-900 mb-2">Sex Workers Advocacy Group (SWAG)</h3>
               <p className="text-gray-700">Amplifying the voices of sex workers and advocating for their rights.</p>
             </div>
             <div className="p-6 bg-green-50 rounded-lg">
-              <img src="src/assets/image100.jpeg" alt="CHASA" className="w-full h-40 object-cover rounded mb-3"/>
+              <img src="/assets/image100.jpeg" alt="CHASA" className="w-full h-40 object-cover rounded mb-3"/>
               <h3 className="text-xl font-semibold text-green-900 mb-2">Community HIV AIDS Support Agent (CHASA)</h3>
               <p className="text-gray-700">Community-based agents providing education, support, and linkage to care.</p>
             </div>
             <div className="p-6 bg-green-50 rounded-lg">
-              <img src="src/assets/image655.jpeg" alt="Community ART Distribution" className="w-full h-40 object-cover rounded mb-3"/>
+              <img src="/assets/image655.jpeg" alt="Community ART Distribution" className="w-full h-40 object-cover rounded mb-3"/>
               <h3 className="text-xl font-semibold text-green-900 mb-2">Out-of-Facility ART Distribution</h3>
               <p className="text-gray-700">Bringing antiretroviral therapy closer to people in need.</p>
             </div>
             <div className="p-6 bg-green-50 rounded-lg">
-              <img src="src/assets/image59.jpeg" alt="CARGS" className="w-full h-40 object-cover rounded mb-3"/>
+              <img src="/assets/image59.jpeg" alt="CARGS" className="w-full h-40 object-cover rounded mb-3"/>
               <h3 className="text-xl font-semibold text-green-900 mb-2">Community ART Refill Groups (CARGS)</h3>
               <p className="text-gray-700">Promoting peer-led ART distribution and adherence monitoring.</p>
             </div>

@@ -3,22 +3,22 @@ import { Link } from "react-router-dom"; // <-- import Link
 
 const slides = [
   {
-    image: "src/assets/bg2.png",
+    image: "/assets/bg2.png",
     heading: "Creating HIV-Resilient Communities",
     text: "BHASO implements comprehensive HIV/TB programs ensuring equitable access to testing, treatment, and care across Zimbabwe.",
   },
   {
-    image: "src/assets/image56.jpeg",
+    image: "/assets/image56.jpeg",
     heading: "Advancing Climate Change & Food Security",
     text: "We promote climate-smart agriculture and sustainable practices to strengthen community resilience against climate change impacts.",
   },
   {
-    image: "src/assets/image65.jpeg",
+    image: "/assets/image65.jpeg",
     heading: "Championing Gender Equality & Human Rights",
     text: "Our programs address gender-based violence and discrimination while empowering marginalized groups including women, youth, and LGBTQ+ communities.",
   },
   {
-    image: "src/assets/image334.jpeg",
+    image: "/assets/image334.jpeg",
     heading: "Innovative Community Health Solutions",
     text: "Through models like SWAG and CHASA, we're transforming HIV management with community-centered approaches.",
   },

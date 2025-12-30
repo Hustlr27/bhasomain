@@ -12,7 +12,7 @@ export function Layout192() {
         <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
           <div className="order-2 md:order-1">
             <img
-              src="src/assets/image78.jpeg"
+              src="/assets/image78.jpeg"
               className="w-full rounded-md object-cover"
               alt="BHASO community health workers providing care"
             />

@@ -18,7 +18,7 @@ export function Layout6() {
             <p className="mb-2 font-semibold text-green-800 uppercase tracking-widest">
               Gender & Human Rights
             </p>
-            <h1 className="mb-5 text-3xl font-bold leading-tight text-gray-900 md:text-4xl lg:text-5xl">
+            <h1 className="mb-5 text-3xl font-bold leading-tight text-green-900 md:text-4xl lg:text-5xl">
               Advancing Equality and Rights for Marginalized Groups
             </h1>
             <p className="mb-6 text-lg text-gray-700 md:mb-8">
@@ -68,7 +68,7 @@ export function Layout6() {
           {/* Image - now full height and larger */}
           <div className="order-1 lg:order-2 h-full min-h-[400px] lg:min-h-[600px]">
             <img
-              src="src/assets/image0.jpeg"
+              src="/assets/image0.jpeg"
               className="w-full h-full object-cover rounded-lg shadow-xl"
               alt="Women participating in BHASO's empowerment workshop"
             />

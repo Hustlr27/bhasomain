@@ -11,35 +11,35 @@ export function Gallery7() {
 
   const images = [
     {
-      src: "src/assets/image30.jpeg",
+      src: "/assets/image30.jpeg",
       alt: "Community Health Drive",
     },
     {
-      src: "src/assets/image009.jpeg",
+      src: "/assets/image009.jpeg",
       alt: "Sustainable Farming Initiative",
     },
     {
-      src: "src/assets/image08.jpeg",
+      src: "/assets/image08.jpeg",
       alt: "Climate Education Campaign",
     },
     {
-      src: "src/assets/image3.jpeg",
+      src: "/assets/image3.jpeg",
       alt: "Youth Empowerment Event",
     },
     {
-      src: "src/assets/image006.jpeg",
+      src: "/assets/image006.jpeg",
       alt: "Mental Health Awareness Workshop",
     },
     {
-      src: "src/assets/image16.jpeg",
+      src: "/assets/image16.jpeg",
       alt: "Local Farming Community",
     },
     {
-      src: "src/assets/image14.jpeg",
+      src: "/assets/image14.jpeg",
       alt: "Clean Water Initiative",
     },
     {
-      src: "src/assets/image07.jpeg",
+      src: "/assets/image07.jpeg",
       alt: "Education for All",
     },
   ];

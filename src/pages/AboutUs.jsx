@@ -19,7 +19,7 @@ export default function AboutUs() {
       <Layout12 />
       <Content28 />
       <Testimonial5 />
-      <Team2 />
+      
       <Cta8 />
     </div>
   );

@@ -4,19 +4,19 @@ import React, { useState, useEffect } from "react";
 
 const slides = [
   {
-    image: "src/assets/image900.jpeg",
+    image: "/assets/image900.jpeg",
     title: "Our Work",
     description:
       "We empower communities through healthcare, climate resilience, and gender equality initiatives across Zimbabwe.",
   },
   {
-    image: "src/assets/image877.jpeg",
+    image: "/assets/image877.jpeg",
     title: "Community-Led Health",
     description:
       "Providing accessible HIV, TB, and wellness programs to improve lives in underserved areas.",
   },
   {
-    image: "src/assets/image655.jpeg",
+    image: "/assets/image655.jpeg",
     title: "Sustainable Development",
     description:
       "Supporting climate-smart agriculture, environmental conservation, and local economic growth.",

@@ -47,7 +47,7 @@ export function Navbar2() {
         <div className="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
           <Link to="/">
             <img
-              src="https://www.bhaso.org/images/BHASO-logo-236.png"
+              src="public/assets/logo.png"
               alt="Logo"
               className="h-15 w-auto"
             />

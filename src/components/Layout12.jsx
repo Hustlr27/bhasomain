@@ -7,7 +7,7 @@ const programs = [
   {
     id: "wellness",
     title: "Health and Wellbeing",
-    image: "src/assets/image09.jpeg",
+    image: "/assets/image09.jpeg",
     shortDesc: "Comprehensive HIV and TB prevention, testing, and treatment programs",
     fullDesc: [
       "BHASO implements community-driven HIV/TB programs ensuring equitable access to services with focus on early diagnosis and treatment adherence.",
@@ -23,7 +23,7 @@ const programs = [
   {
     id: "climate",
     title: "Climate Change",
-    image: "src/assets/image23.jpeg",
+    image: "/assets/image23.jpeg",
     shortDesc: "Agroecology and climate-resilient farming practices",
     fullDesc: [
       "We promote sustainable agriculture through training in climate-smart techniques, helping smallholder farmers adapt to changing weather patterns.",
@@ -39,7 +39,7 @@ const programs = [
   {
     id: "gender",
     title: "Gender & Human Rights",
-    image: "src/assets/image76.jpeg",
+    image: "/assets/image76.jpeg",
     shortDesc: "Reducing GBV and discrimination against marginalized groups",
     fullDesc: [
       "Our programs address gender-based violence and promote rights for women, youth, LGBTQ+ communities through:",
@@ -55,7 +55,7 @@ const programs = [
   {
     id: "information",
     title: "Strategic Information Management",
-    image: "src/assets/image31.jpeg",
+    image: "/assets/image31.jpeg",
     shortDesc: "Data-driven programming and research",
     fullDesc: [
       "BHASO strengthens evidence-based decision making through:",

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export function Blog55() {
   const mainPost = {
     id: 1,
-    src: "src/assets/image900.jpeg",
+    src: "/assets/image900.jpeg",
     category: "Health & Wellness",
     title: "Innovative HIV Prevention Strategies in Zimbabwe",
     desc: "Exploring BHASO's community-driven approaches to HIV prevention and treatment adherence.",
@@ -18,28 +18,28 @@ export function Blog55() {
   const sidePosts = [
     {
       id: 2,
-      src: "src/assets/image877.jpeg",
+      src: "/assets/image877.jpeg",
       category: "Climate Justice",
       title: "Climate Change Impacts on Health Outcomes",
       desc: "How BHASO integrates climate resilience with HIV programming in vulnerable communities.",
     },
     {
       id: 3,
-      src: "src/assets/image767.jpeg",
+      src: "/assets/image767.jpeg",
       category: "Gender Rights",
       title: "Empowering Women Through Health Initiatives",
       desc: "BHASO's programs addressing gender-based violence and economic empowerment.",
     },
     {
       id: 4,
-      src: "src/assets/image907.jpeg",
+      src: "/assets/image907.jpeg",
       category: "Community Health",
       title: "Strengthening Community Health Systems",
       desc: "The SWAG and CHASA models revolutionizing HIV care in Zimbabwe.",
     },
     {
       id: 5,
-      src: "src/assets/image768.jpeg",
+      src: "/assets/image768.jpeg",
       category: "Strategic Information",
       title: "Data-Driven Approaches to Health Equity",
       desc: "How BHASO uses research and knowledge management to enhance program impact.",

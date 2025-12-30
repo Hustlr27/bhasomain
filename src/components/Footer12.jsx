@@ -14,7 +14,7 @@ export function Footer12() {
             {/* About Column */}
             <div className="lg:col-span-2">
               <img
-                src="https://www.bhaso.org/images/BHASO-logo-236.png"
+                src="/assets/logo.png"
                 alt="BHASO Logo"
                 className="h-16 mb-4"
               />
@@ -70,8 +70,8 @@ export function Footer12() {
                 <div className="flex items-start">
                   <FiMapPin className="mt-1 mr-3 flex-shrink-0" />
                   <div>
-                    <p>12 Batanai Avenue</p>
-                    <p>Harare, Zimbabwe</p>
+                    <p>7298 Bugwa Street,Rujeko B</p>
+                    <p>Masvingo, Zimbabwe</p>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -84,8 +84,8 @@ export function Footer12() {
                 <div className="flex items-center">
                   <FiMail className="mr-3" />
                   <div>
-                    <p>info@bhaso.org</p>
-                    <p>volunteer@bhaso.org</p>
+                    <p>information@bhaso.org</p>
+                    
                   </div>
                 </div>
               </div>

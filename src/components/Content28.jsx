@@ -88,7 +88,7 @@ export function Content28() {
           {/* Right: Image */}
           <div className="md:w-1/2">
             <img
-              src="src/assets/image43.jpeg"
+              src="/assets/image43.jpeg"
               alt="Community impact"
               className="rounded-xl object-cover w-full h-[350px] md:h-full"
             />

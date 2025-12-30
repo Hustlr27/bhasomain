@@ -51,13 +51,13 @@ export function Cta20() {
 
       const data = await response.json();
       if (data.success) {
-        setStatus("✅ Thank you! Your message has been sent.");
+        setStatus(" Thank you! Your message has been sent.");
         e.target.reset();
       } else {
-        setStatus("❌ Something went wrong. Please try again.");
+        setStatus("Something went wrong. Please try again.");
       }
     } catch (error) {
-      setStatus("❌ Network error. Please try again later.");
+      setStatus(" Network error. Please try again later.");
     }
   };
 
@@ -67,7 +67,7 @@ export function Cta20() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('src/assets/image43.jpeg')",
+            "url('/assets/image43.jpeg')",
         }}
       />
       <div className="absolute inset-0 bg-black/30" />

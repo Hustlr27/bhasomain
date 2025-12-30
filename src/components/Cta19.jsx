@@ -7,13 +7,9 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-//pk_test_51RvGIlGcjoUFoNC9F4xjaRMbrO0VwvRWZaCLTPbjaPZooOtNSM2u52oAYszmFPMlh3s5EYC7N3xlv3PF9Sy1MNnk007fuAFf5z
-//STRIPE_SECRET_KEY=sk_test_51RvGIlGcjoUFoNC9MqL9SAvErMkyXFDAm6bHGIn7Q4NV9UbqWcXncExYEsZ8lEDyZBeKjSijSjlb6KxRaXmjdogO00mPsDq7DX
+import { FaMobileAlt, FaMoneyBillWave, FaArrowRight } from "react-icons/fa";
 
-//PORT=5000
-const stripePromise = loadStripe(
-  ""
-);
+const stripePromise = loadStripe(""); // your Stripe public key
 
 function CheckoutForm({ donationType, currency, amount, formData }) {
   const stripe = useStripe();
@@ -34,7 +30,6 @@ function CheckoutForm({ donationType, currency, amount, formData }) {
       return;
     }
 
-    // Create PaymentIntent on backend
     try {
       const response = await fetch("http://localhost:5000/create-payment-intent", {
         method: "POST",
@@ -49,7 +44,6 @@ function CheckoutForm({ donationType, currency, amount, formData }) {
         return;
       }
 
-      // Confirm Card Payment
       const cardElement = elements.getElement(CardElement);
       const paymentResult = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -109,11 +103,16 @@ export function Cta19() {
     phone: "",
   });
   const [amount, setAmount] = useState(100);
+  const [showLocalPayments, setShowLocalPayments] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  const donationGoal = 10000; // example value
+  const amountDonated = 4500; // example value
+  const progressPercentage = Math.min((amountDonated / donationGoal) * 100, 100);
 
   return (
     <section className="flex flex-col lg:flex-row min-h-screen bg-white" id="Cta19">
@@ -121,8 +120,9 @@ export function Cta19() {
       <div className="w-full lg:w-1/2 bg-green-900 text-white p-12 flex flex-col justify-center">
         <div className="max-w-md mx-auto">
           <h2 className="text-4xl font-bold mb-6">Your Donation Makes a Difference</h2>
-          
+          {/* Existing motivational content with icons */}
           <div className="mb-8">
+            {/* Transform Lives */}
             <div className="flex items-start mb-6">
               <div className="bg-green-700 rounded-full p-2 mr-4 mt-1">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -136,7 +136,7 @@ export function Cta19() {
                 </p>
               </div>
             </div>
-
+            {/* Sustainable Impact */}
             <div className="flex items-start mb-6">
               <div className="bg-green-700 rounded-full p-2 mr-4 mt-1">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -150,7 +150,7 @@ export function Cta19() {
                 </p>
               </div>
             </div>
-
+            {/* Community Strength */}
             <div className="flex items-start">
               <div className="bg-green-700 rounded-full p-2 mr-4 mt-1">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -247,51 +247,43 @@ export function Cta19() {
           {/* User info inputs */}
           <div className="space-y-4 mb-6">
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="First Name*"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  name="surname"
-                  placeholder="Last Name*"
-                  value={formData.surname}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent"
-                />
-              </div>
-            </div>
-            <div>
               <input
-                type="email"
-                name="email"
-                placeholder="Email Address*"
-                value={formData.email}
+                type="text"
+                name="name"
+                placeholder="First Name*"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent"
+              />
+              <input
+                type="text"
+                name="surname"
+                placeholder="Last Name*"
+                value={formData.surname}
                 onChange={handleInputChange}
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent"
               />
             </div>
-            <div>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number*"
-                value={formData.phone}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent"
-              />
-            </div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address*"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent"
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number*"
+              value={formData.phone}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-800 focus:border-transparent"
+            />
           </div>
 
           {/* Payment Section */}
@@ -332,7 +324,70 @@ export function Cta19() {
             )}
           </div>
 
-          <p className="text-sm text-gray-500">
+          {/* Local Payment Toggle */}
+          <div className="text-center mt-6">
+            <button
+              className="text-green-900 underline font-semibold hover:text-green-700 transition"
+              onClick={() => setShowLocalPayments(!showLocalPayments)}
+            >
+              {showLocalPayments
+                ? "Hide Zimbabwe Local Payment Methods"
+                : "Zimbabwe Local Payment Methods"}
+            </button>
+          </div>
+
+          {/* Zimbabwe Local Payments Section */}
+          {showLocalPayments && (
+            <div className="mt-6 grid md:grid-cols-2 gap-8 items-start bg-green-50 text-green-900 p-6 rounded-lg shadow-lg">
+              {/* Left: Instructions */}
+              <div>
+                <h3 className="text-2xl font-bold mb-4">How to Pay Locally</h3>
+                <div className="flex items-start mb-4">
+                  <FaMobileAlt size={24} className="mr-3 mt-1 text-green-900" />
+                  <div>
+                    <h4 className="font-semibold mb-1">EcoCash</h4>
+                    <p className="text-sm">
+                      Dial *151# → Select "Send Money" → Enter our EcoCash number → Enter amount → Confirm with PIN.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start mb-4">
+                  <FaMoneyBillWave size={24} className="mr-3 mt-1 text-green-900" />
+                  <div>
+                    <h4 className="font-semibold mb-1">Mukuru</h4>
+                    <p className="text-sm">
+                      Log in to your Mukuru app → Select "Send Money" → Enter recipient details → Enter amount → Confirm.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start mb-4">
+                  <FaArrowRight size={24} className="mr-3 mt-1 text-green-900" />
+                  <div>
+                    <h4 className="font-semibold mb-1">Bank Transfer</h4>
+                    <p className="text-sm">
+                      Use your bank app or internet banking to transfer directly to our designated bank account. Include your name in the reference.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Donation Progress */}
+              <div>
+                <h3 className="text-2xl font-bold mb-4">Donation Progress</h3>
+                <div className="w-full bg-green-200 rounded-full h-6 mb-2">
+                  <div
+                    className="bg-green-900 h-6 rounded-full transition-all duration-500"
+                    style={{ width: `${progressPercentage}%` }}
+                  ></div>
+                </div>
+                <p className="text-sm text-green-900 mb-2">
+                  ${amountDonated.toLocaleString()} donated of ${donationGoal.toLocaleString()} goal
+                </p>
+              </div>
+            </div>
+          )}
+
+          <p className="text-sm text-gray-500 mt-6">
             Your donation is secure and tax-deductible. BHASO is a 501(c)(3) nonprofit organization.
           </p>
         </div>

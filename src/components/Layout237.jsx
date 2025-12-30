@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@relume_io/relume-ui";
+
 import React, { useEffect, useState } from "react";
 import { RxChevronRight } from "react-icons/rx";
 import { Link } from "react-router-dom";
@@ -44,7 +44,7 @@ export function Layout237() {
           {/* Left image */}
           <div className="flex justify-center">
             <img
-              src="src/assets/bhaso1.png"
+              src="/assets/bhaso1.png"
               alt="BHASO community health workers"
               className="rounded-lg shadow-lg w-full max-w-[600px] h-auto"
             />

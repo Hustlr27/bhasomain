@@ -17,7 +17,7 @@ export function Cta8() {
         
       <div className="flex flex-col sm:flex-row justify-center gap-4">
   <Link
-    to="/#Cta19"
+    to="/donate"
     className="bg-green-700 hover:bg-green-200 text-white px-8 py-3 inline-block text-center"
   >
     Donate Now

@@ -9,32 +9,44 @@ import { Link } from "react-router-dom";
 export function Layout240() {
   const programs = [
     {
-      src: "src/assets/image348.jpeg",
+      src: "/assets/image348.jpeg",
       alt: "Health and Wellbeing",
       title: "Health & Wellbeing",
       desc: "Comprehensive testing, treatment and care programs",
-      detailed: "BHASO implements community-driven HIV/TB programs ensuring equitable access to services with focus on early diagnosis and treatment adherence. Our differentiated service delivery models reach vulnerable populations across Zimbabwe.",
+      detailed:
+        "BHASO implements community-driven HIV/TB programs ensuring equitable access to services with focus on early diagnosis and treatment adherence. Our differentiated service delivery models reach vulnerable populations across Zimbabwe.",
     },
     {
-      src: "src/assets/image45.jpeg",
+      src: "/assets/image45.jpeg",
       alt: "Climate Smart Agriculture",
-      title: "Climate Justice",
+      title: "Climate Change and Resilience",
       desc: "Agroecology and climate-resilient farming practices",
-      detailed: "We promote sustainable agriculture through training in climate-smart techniques, helping smallholder farmers adapt to changing weather patterns while improving food security and nutrition in vulnerable communities.",
+      detailed:
+        "We promote sustainable agriculture through training in climate-smart techniques, helping smallholder farmers adapt to changing weather patterns while improving food security and nutrition in vulnerable communities.",
     },
     {
-      src: "src/assets/image66.jpeg",
+      src: "/assets/image66.jpeg",
       alt: "Gender Equality",
       title: "Gender & Human Rights",
       desc: "Reducing GBV and discrimination against marginalized groups",
-      detailed: "Our programs address gender-based violence and promote rights for women, youth, LGBTQ+ communities and people with disabilities through advocacy, education and economic empowerment initiatives.",
+      detailed:
+        "Our programs address gender-based violence and promote rights for women, youth, LGBTQ+ communities and people with disabilities through advocacy, education and economic empowerment initiatives.",
     },
     {
-      src: "src/assets/bhaso.png",
+      src: "/assets/bhaso.png",
       alt: "Strategic Information",
-      title: "Strategic Information",
+      title: "Strategic Information & Knowledge Management",
       desc: "Data-driven programming and research",
-      detailed: "BHASO strengthens evidence-based decision making through robust monitoring & evaluation, research and knowledge management systems that inform our health and climate justice interventions.",
+      detailed:
+        "BHASO strengthens evidence-based decision making through robust monitoring & evaluation, research and knowledge management systems that inform our health and climate justice interventions.",
+    },
+    {
+      src: "/assets/image348.jpeg",
+      alt: "Resource Mobilisation",
+      title: "Resource Mobilisation",
+      desc: "Building sustainability through partnerships and innovation",
+      detailed:
+        "We enhance organisational sustainability by mobilising financial, technical, and human resources through strategic partnerships, donor engagement, and innovative funding approaches aligned with our mission.",
     },
   ];
 
@@ -44,8 +56,8 @@ export function Layout240() {
   const scrollLeft = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: -300,
-        behavior: 'smooth'
+        left: -320,
+        behavior: "smooth",
       });
     }
   };
@@ -53,8 +65,8 @@ export function Layout240() {
   const scrollRight = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: 300,
-        behavior: 'smooth'
+        left: 320,
+        behavior: "smooth",
       });
     }
   };
@@ -73,31 +85,35 @@ export function Layout240() {
         </div>
 
         {/* Cards with navigation arrows */}
-        <div className="relative">
+        <div className="relative flex items-center">
           <button
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-green-900 text-white p-2 rounded-full hover:bg-green-800"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-green-900 text-white p-3 rounded-full hover:bg-green-800 shadow-md"
           >
             <FiChevronLeft size={24} />
           </button>
 
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto scrollbar-hide py-4 px-2"
-            style={{ scrollSnapType: 'x mandatory' }}
+            className="flex gap-6 overflow-x-auto scrollbar-hide py-4 px-8"
+            style={{ scrollSnapType: "x mandatory" }}
           >
             {programs.map(({ src, alt, title, desc }, i) => (
               <div
                 key={i}
                 onClick={() => setSelectedIndex(i)}
-                className={`flex-shrink-0 w-[300px] h-[200px] cursor-pointer transition-all duration-200 ${i === selectedIndex ? 'ring-4 ring-green-700' : 'opacity-90 hover:opacity-100'
-                  }`}
-                style={{ scrollSnapAlign: 'start' }}
+                className={`flex-shrink-0 w-[300px] h-[220px] cursor-pointer transition-all duration-200 ${
+                  i === selectedIndex
+                    ? "ring-4 ring-green-700"
+                    : "opacity-90 hover:opacity-100"
+                }`}
+                style={{ scrollSnapAlign: "start" }}
               >
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
                   <img
                     src={src}
                     alt={alt}
+                    loading="lazy"
                     className="w-full h-full object-cover brightness-75"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4">
@@ -111,7 +127,7 @@ export function Layout240() {
 
           <button
             onClick={scrollRight}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-green-900 text-white p-2 rounded-full hover:bg-green-800"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-green-900 text-white p-3 rounded-full hover:bg-green-800 shadow-md"
           >
             <FiChevronRight size={24} />
           </button>
@@ -123,17 +139,17 @@ export function Layout240() {
             {programs[selectedIndex].detailed}
           </p>
 
-          <div className="flex gap-6">
+          <div className="flex gap-6 flex-wrap">
             <Link
               to="/about"
-              className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 inline-block text-center"
+              className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 inline-block text-center rounded-md"
             >
               Learn About Our Programs
             </Link>
 
             <Link
               to="/our-work"
-              className="flex items-center text-green-700 px-20 hover:text-green-900 px-0 py-0"
+              className="flex items-center text-green-700 hover:text-green-900 text-lg"
             >
               View Strategic Plan
               <RxChevronRight className="ml-1" />

@@ -6,31 +6,31 @@ export default function GetInvolved() {
     {
       title: "HIV/TB Programs",
       description: "Help provide education, testing, and support services for communities affected by HIV and tuberculosis.",
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&auto=format&fit=crop&q=60",
+      image: "/assets/image66.jpeg",
       details: "Our HIV/TB programs focus on prevention, testing, and treatment support. Volunteers assist with community outreach, education workshops, and patient support services. No medical background required - we provide full training."
     },
     {
       title: "Climate Initiatives",
       description: "Join efforts to combat climate change by promoting sustainability and environmental awareness.",
-      image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=500&auto=format&fit=crop&q=60",
+      image: "/assets/image98.jpeg",
       details: "Climate initiative volunteers work on tree planting, recycling programs, and environmental education. Activities include organizing clean-ups, conducting sustainability workshops, and advocating for green policies in local communities."
     },
     {
       title: "Gender Equality",
       description: "Advocate for women's rights, gender equality, and empowerment in local communities.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60",
+      image: "/assets/image854.jpeg",
       details: "Gender equality volunteers support our empowerment programs through mentorship, skills training, and awareness campaigns. We work with schools, community centers, and workplaces to promote equal opportunities for all."
     },
     {
       title: "Research & Data",
       description: "Support evidence-based decision-making through data collection, analysis, and research projects.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop&q=60",
+      image: "/assets/image655.jpeg",
       details: "Our research volunteers help collect and analyze data that informs our programs and advocacy work. Opportunities include field research, data entry, statistical analysis, and report writing."
     },
     {
       title: "Community Outreach",
       description: "Engage directly with communities to provide support, resources, and development programs.",
-      image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=500&auto=format&fit=crop&q=60",
+      image: "/assets/image767.jpeg",
       details: "Community outreach volunteers are the face of BHASO in local neighborhoods. Activities include organizing events, distributing resources, conducting needs assessments, and connecting community members with services."
     },
   ];
@@ -131,7 +131,7 @@ export default function GetInvolved() {
         </div>
         <div className="order-1 md:order-2">
           <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=60"
+            src="/assets/image334.jpeg"
             alt="Volunteers working together"
             className="rounded-lg shadow-lg w-full h-auto object-cover aspect-video"
           />
@@ -228,7 +228,7 @@ export default function GetInvolved() {
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="flex items-center mb-4">
               <img 
-                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&auto=format&fit=crop&q=60" 
+                src="/assets/image59.jpeg" 
                 alt="Sarah" 
                 className="w-12 h-12 rounded-full object-cover mr-4"
               />
@@ -244,7 +244,7 @@ export default function GetInvolved() {
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="flex items-center mb-4">
               <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=60" 
+                src="/assets/image90.jpeg" 
                 alt="James" 
                 className="w-12 h-12 rounded-full object-cover mr-4"
               />
