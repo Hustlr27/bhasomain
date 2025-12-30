@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export const Cta89 = () => {
+export const cta89 = () => {
   const partners = [
     "MOHCC", "NAC", "Global Fund", "MSF", "REPSSI", "Newlife Centre"
   ];
